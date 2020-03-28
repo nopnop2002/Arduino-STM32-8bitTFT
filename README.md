@@ -39,7 +39,7 @@ https://github.com/adafruit/Adafruit-GFX-Library
 
 (\*1)
 Serial.print of NUCLEO and DISC1 gose to PA2   
-Serial.print of Generic Board gose to PA9   
+If you use NUCLEO or DISC1, you need to change it.   
 
 (\*2)
 When a regulator(It's often AMS1117) is mounted on the back, it's operated 5V.   
