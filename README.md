@@ -65,6 +65,10 @@ RM68140 3.95inch 320x480
 
 ![TFT-SHIELD-2](https://user-images.githubusercontent.com/6020549/77811736-c0082a80-70df-11ea-861e-d2117e2718a0.JPG)
 
+__NOTE__   
+If you want to use a TFT that is not on the list, please let us know where to buy it with an issue.   
+However, expensive TFTs are not used.   
+
 ----
 
 # Boards available    
