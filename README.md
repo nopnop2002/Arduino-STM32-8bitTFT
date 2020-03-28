@@ -132,6 +132,12 @@ Serial.print("Height: "); Serial.println(height); // You will see 400
 # ILI9342 2.4 inch TFT
 ![ili9342](https://user-images.githubusercontent.com/6020549/34552887-9aa02fb2-f167-11e7-8ca6-6517de127a4a.JPG)
 
+---
+
+# NUCLEO F446RE
+
+![8bitTFT](https://user-images.githubusercontent.com/6020549/77814188-2ac26180-70f2-11ea-8080-9e3cac22ce5a.JPG)
+
 ----
 
 # Benchmark using ILI9341(240x320)   
