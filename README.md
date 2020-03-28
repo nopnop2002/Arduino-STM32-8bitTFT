@@ -45,7 +45,9 @@ If you use NUCLEO or DISC1, you need to change it.
 When a regulator(It's often AMS1117) is mounted on the back, it's operated 5V.   
 When a regulator is NOT mounted on the back, it's operated 3.3V.   
 
-__Note__:You can change to any pin. To change the pin, change Arduino-STM32-8bitTFT.h.
+__Note__:You can change to any pin. To change the pin, change Arduino-STM32-8bitTFT.h.   
+
+__Note__:Keep the wire length as short as possible.   
 
 ----
 
