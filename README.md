@@ -75,6 +75,7 @@ https://www.st.com/content/st_com/en/search.html#q=Descriptions%20hal%20and%20ll
 
 # Setting your TFT's resolution    
 
+The default resolution of this library is 240x320.   
 If your TFT's resolution is 320x480,   
 you have to set your TFT's resolution using tft.setResoution.   
 
