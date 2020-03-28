@@ -109,7 +109,7 @@ Serial.print("Height: "); Serial.println(height); // You will see 400
 
 ---
 
-# R61505 2.4 inch TFT
+# STM32F103 + R61505 2.4 inch TFT
 ![r61505](https://user-images.githubusercontent.com/6020549/34552852-70d1e6bc-f167-11e7-8df9-41587ebccc79.JPG)
 
 ---
