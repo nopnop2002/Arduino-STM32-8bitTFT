@@ -113,11 +113,9 @@ Serial.print("Height: "); Serial.println(height); // You will see 400
 
 ![r61505](https://user-images.githubusercontent.com/6020549/34552852-70d1e6bc-f167-11e7-8df9-41587ebccc79.JPG)
 
-
 - STM32F103 + SPFD5408 2.4 inch TFT
 
 ![spfd5408](https://user-images.githubusercontent.com/6020549/34552862-7ae8d62e-f167-11e7-84dd-73b07476cd50.JPG)
-
 
 - STM32F103 + ILI9325 2.4 inch TFT
 
@@ -131,13 +129,17 @@ Serial.print("Height: "); Serial.println(height); // You will see 400
 
 ![ili9342](https://user-images.githubusercontent.com/6020549/34552887-9aa02fb2-f167-11e7-8ca6-6517de127a4a.JPG)
 
-- NUCLEO F446RE + ILI9341 2.4 inch TFT
+- STM32F401 + ILI9341 2.4 inch TFT
 
-![8bitTFT](https://user-images.githubusercontent.com/6020549/77814188-2ac26180-70f2-11ea-8080-9e3cac22ce5a.JPG)
+![STM32F401](https://user-images.githubusercontent.com/6020549/77814907-ce167500-70f8-11ea-8952-d6d1c1cc8801.JPG)
 
 - STM32F407  + ILI9341 2.4 inch TFT
 
 ![STM32F407](https://user-images.githubusercontent.com/6020549/77814593-a540b080-70f5-11ea-93c2-564f9bb0d817.JPG)
+
+- NUCLEO F446RE + ILI9341 2.4 inch TFT
+
+![8bitTFT](https://user-images.githubusercontent.com/6020549/77814188-2ac26180-70f2-11ea-8080-9e3cac22ce5a.JPG)
 
 ----
 
