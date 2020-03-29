@@ -23,7 +23,12 @@ __NOTE__
 The pins used in the SPI differ from board to board.   
 You need to check the following files for the SPI pins on your board.   
 ```
+Default SPI
 C:\Users\user\Documents\ArduinoData\packages\STM32\hardware\stm32\{Core_Version}\variants\{Board_Name}\variant.h
+
+Alternative SPI
+C:\Users\user\Documents\ArduinoData\packages\STM32\hardware\stm32\{Core_Version}\variants\{Board_Name}\PeripheralPins.c
+
 ```
 
 # How to use    
