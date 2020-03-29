@@ -1,0 +1,37 @@
+# JPEG Viewer    
+
+Viewer of a JPEG file in the SD card.   
+
+# Additional Software requirement    
+
+Arduino FAT16/FAT32 Library   
+https://github.com/greiman/SdFat   
+
+JPEG decoder library for STM32   
+https://github.com/nopnop2002/STM32_JPEGDecorder   
+
+# Wirering for TFT built-in SD-CARD Reader   
+
+|TFT||STM32F103|
+|:-:|:-:|:-:|
+|SD_SS|--|PB12|
+|SD_SCK|--|PB13|
+|SD_DO|--|PB14|
+|SD_DI|--|PB15|
+
+__NOTE__   
+The pins used in the SPI differ from board to board.   
+You need to check the following files for the SPI pins used on your board.   
+C:\Users\user\Documents\ArduinoData\packages\STM32\hardware\stm32\{Core_Version}\variants\{Board_Name}\variant.h
+
+# How to use    
+
+Copy JPEGS file to your SD-CARD.   
+__The biggest length of the JPEG file name is 32 character.__   
+Wire TFT built-in SD-CARD Reader to STM32.   
+Write this sketch.   
+
+STM32F103 + ILI9341 3.5 inch TFT
+
+![JPEG-View-3 5](https://user-images.githubusercontent.com/6020549/77842953-46e9ff80-71d3-11ea-8a1b-7d1ed100ebaf.JPG)
+
