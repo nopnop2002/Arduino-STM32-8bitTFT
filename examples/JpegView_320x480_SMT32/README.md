@@ -38,7 +38,7 @@ __The biggest length of the JPEG file name is 32 character.__
 Wire TFT built-in SD-CARD Reader to STM32.   
 Write this sketch.   
 
-STM32F103 + ILI9341 3.5 inch TFT
+STM32F103 + ILI9481 3.5 inch TFT
 
 ![JPEG-View-3 5](https://user-images.githubusercontent.com/6020549/77842953-46e9ff80-71d3-11ea-8a1b-7d1ed100ebaf.JPG)
 
