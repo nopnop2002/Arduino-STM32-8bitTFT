@@ -22,7 +22,9 @@ https://github.com/nopnop2002/STM32_JPEGDecorder
 __NOTE__   
 The pins used in the SPI differ from board to board.   
 You need to check the following files for the SPI pins used on your board.   
+```
 C:\Users\user\Documents\ArduinoData\packages\STM32\hardware\stm32\{Core_Version}\variants\{Board_Name}\variant.h
+```
 
 # How to use    
 
