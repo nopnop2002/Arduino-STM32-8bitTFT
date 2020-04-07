@@ -20,7 +20,7 @@
 
 
 #include <Adafruit_GFX.h>
-#include <SdFat.h>				// https://github.com/greiman/SdFat
+#include <SdFat.h>        // https://github.com/greiman/SdFat
 #include <JPEGDecoder.h>  // https://github.com/Bodmer/JPEGDecoder
 #include "Arduino-STM32-8bitTFT.h"
 
