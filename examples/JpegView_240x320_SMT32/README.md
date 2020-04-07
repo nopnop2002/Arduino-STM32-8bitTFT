@@ -4,10 +4,10 @@ Viewer of a JPEG file in the SD card.
 
 # Additional Software requirement    
 
-Arduino FAT16/FAT32 Library   
+- Arduino FAT16/FAT32 Library   
 https://github.com/greiman/SdFat   
 
-JPEG decoder library   
+- JPEG decoder library   
 https://github.com/Bodmer/JPEGDecoder   
 
 # Wirering for TFT built-in SD-CARD Reader   

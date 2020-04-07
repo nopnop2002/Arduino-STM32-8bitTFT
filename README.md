@@ -8,10 +8,10 @@ https://github.com/prenticedavid/MCUFRIEND_kbv
 
 # Software requirement    
 
-Core library    
+- Core library    
 https://github.com/stm32duino/Arduino_Core_STM32
 
-Adafruit GFX Library   
+- Adafruit GFX Library   
 https://github.com/adafruit/Adafruit-GFX-Library   
 
 ----
