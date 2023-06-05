@@ -20,32 +20,42 @@ https://github.com/adafruit/Adafruit-GFX-Library
 
 |TFT||STM32|
 |:-:|:-:|:-:|
-|LCD_RD|--|PB0|
-|LCD_WR|--|PB1|
-|LCD_RS|--|PB5|
-|LCD_CS|--|PB6|
-|LCD_RST|--|PB7|
-|LCD_D0|--|PA0|
-|LCD_D1|--|PA1|
-|LCD_D2|--|PA2(*1)|
-|LCD_D3|--|PA3|
-|LCD_D4|--|PA4|
-|LCD_D5|--|PA5|
-|LCD_D6|--|PA6|
-|LCD_D7|--|PA7|
-|5V|--|5V(*2)|
-|3.3V|--|3.3V(*2)|
+|LCD_RD|--|PB0(*1)|
+|LCD_WR|--|PB1(*1)|
+|LCD_RS|--|PB5(*1)|
+|LCD_CS|--|PB6(*1)|
+|LCD_RST|--|PB7(*1)|
+|LCD_D0|--|PA0(*2)|
+|LCD_D1|--|PA1(*2)|
+|LCD_D2|--|PA2(*2)|
+|LCD_D3|--|PA3(*2)|
+|LCD_D4|--|PA4(*2)|
+|LCD_D5|--|PA5(*2)|
+|LCD_D6|--|PA6(*2)|
+|LCD_D7|--|PA7(*2)|
+|5V|--|5V(*3)|
+|3.3V|--|3.3V(*3)|
 |GND|--|GND|
 
 (\*1)
-Serial.print of NUCLEO and DISC1 gose to PA2   
-If you use NUCLEO or DISC1, you need to change it.   
+You can change to other PB pin. To change the pin, change Arduino-STM32-8bitTFT.h.   
+```
+#define TFT_RD         LL_GPIO_PIN_0 // Px0
+#define TFT_WR         LL_GPIO_PIN_1 // Px1
+#define TFT_RS         LL_GPIO_PIN_5 // Px5
+#define TFT_CS         LL_GPIO_PIN_6 // Px6
+#define TFT_RST        LL_GPIO_PIN_7 // Px7
+```
 
 (\*2)
+Serial.print of NUCLEO and DISC1 gose to PA2   
+If you use NUCLEO or DISC1, you need to change it.   
+You can change to other port. To change the pin, change Arduino-STM32-8bitTFT.h.   
+
+(\*3)
 When a regulator(It's often AMS1117) is mounted on the back, it's operated 5V.   
 When a regulator is NOT mounted on the back, it's operated 3.3V.   
 
-__Note__:You can change to any pin. To change the pin, change Arduino-STM32-8bitTFT.h.   
 
 __Note__:Keep the wire length as short as possible.   
 
