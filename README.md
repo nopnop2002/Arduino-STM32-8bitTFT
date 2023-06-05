@@ -53,6 +53,8 @@ Therefore, PB3 and PB4 may not be available.
 Serial.print of NUCLEO and DISC1 gose to PA2   
 If you use NUCLEO or DISC1, you need to change it.   
 You can change to other port. To change the port, change Arduino-STM32-8bitTFT.h.   
+D0 to D7 outputs use the following functions:```LL_GPIO_WriteOutputPort()```   
+This function operates on a specific port.
 
 (\*3)
 When a regulator(It's often AMS1117) is mounted on the back, it's operated 5V.   
