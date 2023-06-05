@@ -50,7 +50,7 @@ You can change to other PB pin. To change the pin, change Arduino-STM32-8bitTFT.
 (\*2)
 Serial.print of NUCLEO and DISC1 gose to PA2   
 If you use NUCLEO or DISC1, you need to change it.   
-You can change to other port. To change the pin, change Arduino-STM32-8bitTFT.h.   
+You can change to other port. To change the port, change Arduino-STM32-8bitTFT.h.   
 
 (\*3)
 When a regulator(It's often AMS1117) is mounted on the back, it's operated 5V.   
