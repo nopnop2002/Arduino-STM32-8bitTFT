@@ -39,6 +39,8 @@ https://github.com/adafruit/Adafruit-GFX-Library
 
 (\*1)
 You can change to other PB pin. To change the pin, change Arduino-STM32-8bitTFT.h.   
+Some boards assign PB3 PB4 to the JTAG debug port by default.   
+Therefore, PB3 and PB4 may not be available.   
 ```
 #define TFT_RD         LL_GPIO_PIN_0 // Px0
 #define TFT_WR         LL_GPIO_PIN_1 // Px1
