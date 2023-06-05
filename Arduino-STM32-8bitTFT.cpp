@@ -42,8 +42,9 @@ static uint8_t is8347 = 0;
 STM32_TFT_8bit::STM32_TFT_8bit(void)
 : Adafruit_GFX(TFTWIDTH, TFTHEIGHT) {
 
+  //enable TFT_CNTRL port clock
   enablePortClock(TFT_CNTRL);
-
+  
   // set control pin mode
   LL_GPIO_SetPinMode(TFT_CNTRL, TFT_RD, LL_GPIO_MODE_OUTPUT);
   LL_GPIO_SetPinMode(TFT_CNTRL, TFT_WR, LL_GPIO_MODE_OUTPUT);
@@ -92,12 +93,12 @@ STM32_TFT_8bit::STM32_TFT_8bit(void)
   _pins[6] = TFT_D6;
   _pins[7] = TFT_D7;
 
-  //enable GPIO port clock
+  //enable TFT_DATA port clock
   enablePortClock(TFT_DATA);
 
 }
 
-
+// STM32F103 does not have GPIOE defined
 void STM32_TFT_8bit::enablePortClock(GPIO_TypeDef *gpio) {
   if (gpio == GPIOA) {
     __HAL_RCC_GPIOA_CLK_ENABLE();
@@ -106,11 +107,10 @@ void STM32_TFT_8bit::enablePortClock(GPIO_TypeDef *gpio) {
   } else if (gpio == GPIOC) {
     __HAL_RCC_GPIOC_CLK_ENABLE();
   } else if (gpio == GPIOD) {
-    __HAL_RCC_GPIOE_CLK_ENABLE();
-  } else if (gpio == GPIOE) {
-    __HAL_RCC_GPIOE_CLK_ENABLE();
+    __HAL_RCC_GPIOD_CLK_ENABLE();
   }
 }
+
 
 void STM32_TFT_8bit::setWriteDataBus(void) {
   for (int i=0;i<8;i++) {
@@ -733,11 +733,6 @@ void STM32_TFT_8bit::begin(uint16_t ID) {
       table8_ads = ILI9342_regValues_CPT24, table_size = sizeof(ILI9342_regValues_CPT24);   //
       //table8_ads = ILI9342_regValues_Tianma23, table_size = sizeof(ILI9342_regValues_Tianma23);   //
       //table8_ads = ILI9342_regValues_HSD23, table_size = sizeof(ILI9342_regValues_HSD23);   //
-
-      p16 = (int16_t *) & HEIGHT;
-      *p16 = 240;
-      p16 = (int16_t *) & WIDTH;
-      *p16 = 320;
     break;
 
     case 0x1581:                        //no BGR in MADCTL.  set BGR in Panel Control
@@ -837,6 +832,79 @@ void STM32_TFT_8bit::begin(uint16_t ID) {
 //        table8_ads = ILI9481_RGB_regValues, table_size = sizeof(ILI9481_RGB_regValues);
 
     break;
+
+    case 0x9486:
+        _lcd_capable = AUTO_READINC | MIPI_DCS_REV1 | MV_AXIS; //Red 3.5", Blue 3.5"
+//        _lcd_capable = AUTO_READINC | MIPI_DCS_REV1 | MV_AXIS | REV_SCREEN; //old Red 3.5"
+        static const uint8_t ILI9486_regValues[] PROGMEM = {
+/*
+            0xF2, 9, 0x1C, 0xA3, 0x32, 0x02, 0xB2, 0x12, 0xFF, 0x12, 0x00,        //f.k
+            0xF1, 2, 0x36, 0xA4,        //
+            0xF8, 2, 0x21, 0x04,        //
+            0xF9, 2, 0x00, 0x08,        //
+*/
+            0xC0, 2, 0x0d, 0x0d,        //Power Control 1 [0E 0E]
+            0xC1, 2, 0x43, 0x00,        //Power Control 2 [43 00]
+            0xC2, 1, 0x00,      //Power Control 3 [33]
+            0xC5, 4, 0x00, 0x48, 0x00, 0x48,    //VCOM  Control 1 [00 40 00 40]
+            0xB4, 1, 0x00,      //Inversion Control [00]
+            0xB6, 3, 0x02, 0x02, 0x3B,  // Display Function Control [02 02 3B]
+#define GAMMA9486 4
+#if GAMMA9486 == 0
+            // default GAMMA terrible
+#elif GAMMA9486 == 1
+            // GAMMA f.k.	bad		
+            0xE0, 15, 0x0f, 0x31, 0x2b, 0x0c, 0x0e, 0x08, 0x4e, 0xf1, 0x37, 0x07, 0x10, 0x03, 0x0e, 0x09, 0x00,
+            0xE1, 15, 0x00, 0x0e, 0x14, 0x03, 0x11, 0x07, 0x31, 0xC1, 0x48, 0x08, 0x0f, 0x0c, 0x31, 0x36, 0x0f,
+#elif GAMMA9486 == 2
+            // 1.2 CPT 3.5 Inch Initial Code not bad
+			0xE0, 15, 0x0F, 0x1B, 0x18, 0x0B, 0x0E, 0x09, 0x47, 0x94, 0x35, 0x0A, 0x13, 0x05, 0x08, 0x03, 0x00, 
+			0xE1, 15, 0x0F, 0x3A, 0x37, 0x0B, 0x0C, 0x05, 0x4A, 0x24, 0x39, 0x07, 0x10, 0x04, 0x27, 0x25, 0x00, 
+#elif GAMMA9486 == 3
+            // 2.2 HSD 3.5 Inch Initial Code not bad
+			0xE0, 15, 0x0F, 0x1F, 0x1C, 0x0C, 0x0F, 0x08, 0x48, 0x98, 0x37, 0x0A, 0x13, 0x04, 0x11, 0x0D, 0x00, 
+			0xE1, 15, 0x0F, 0x32, 0x2E, 0x0B, 0x0D, 0x05, 0x47, 0x75, 0x37, 0x06, 0x10, 0x03, 0x24, 0x20, 0x00, 
+#elif GAMMA9486 == 4
+            // 3.2 TM  3.2 Inch Initial Code not bad
+			0xE0, 15, 0x0F, 0x21, 0x1C, 0x0B, 0x0E, 0x08, 0x49, 0x98, 0x38, 0x09, 0x11, 0x03, 0x14, 0x10, 0x00, 
+			0xE1, 15, 0x0F, 0x2F, 0x2B, 0x0C, 0x0E, 0x06, 0x47, 0x76, 0x37, 0x07, 0x11, 0x04, 0x23, 0x1E, 0x00, 
+#elif GAMMA9486 == 5
+            // 4.2 WTK 3.5 Inch Initial Code too white
+			0xE0, 15, 0x0F, 0x10, 0x08, 0x05, 0x09, 0x05, 0x37, 0x98, 0x26, 0x07, 0x0F, 0x02, 0x09, 0x07, 0x00, 
+			0xE1, 15, 0x0F, 0x38, 0x36, 0x0D, 0x10, 0x08, 0x59, 0x76, 0x48, 0x0A, 0x16, 0x0A, 0x37, 0x2F, 0x00, 
+#endif
+        };
+        table8_ads = ILI9486_regValues, table_size = sizeof(ILI9486_regValues);
+        break;
+
+    case 0x7796:
+        _lcd_capable = AUTO_READINC | MIPI_DCS_REV1 | MV_AXIS;   //thanks to safari1
+        static const uint8_t PROGMEM ST7796_regValues[] = {
+            0xB7, 1, 0xC6,              //Entry Mode      [06]
+            0xE8, 8, 0x40, 0x8A, 0x00, 0x00, 0x29, 0x19, 0xA5, 0x33, //Adj3 [40 8A 00 00 25 0A 38 33]
+        };
+        table8_ads = ST7796_regValues, table_size = sizeof(ST7796_regValues);
+        break;
+
+    case 0x9487:                //with thanks to Charlyf
+    case 0x9488:
+        _lcd_capable = AUTO_READINC | MIPI_DCS_REV1 | MV_AXIS | READ_24BITS;
+      common_9488:
+        static const uint8_t ILI9488_regValues_max[] PROGMEM = {        // Atmel MaxTouch
+            0xC0, 2, 0x10, 0x10,        //Power Control 1 [0E 0E]
+            0xC1, 1, 0x41,      //Power Control 2 [43]
+            0xC5, 4, 0x00, 0x22, 0x80, 0x40,    //VCOM  Control 1 [00 40 00 40]
+            0x36, 1, 0x68,      //Memory Access [00]
+            0xB0, 1, 0x00,      //Interface     [00]
+            0xB1, 2, 0xB0, 0x11,        //Frame Rate Control [B0 11]
+            0xB4, 1, 0x02,      //Inversion Control [02]
+            0xB6, 3, 0x02, 0x02, 0x3B,  // Display Function Control [02 02 3B] .kbv NL=480
+            0xB7, 1, 0xC6,      //Entry Mode      [06]
+            0x3A, 1, 0x55,      //Interlace Pixel Format [XX]
+            0xF7, 4, 0xA9, 0x51, 0x2C, 0x82,    //Adjustment Control 3 [A9 51 2C 82]
+        };
+        table8_ads = ILI9488_regValues_max, table_size = sizeof(ILI9488_regValues_max);
+        break;
 
     case 0x6814:
         _lcd_capable = AUTO_READINC | MIPI_DCS_REV1 | MV_AXIS;

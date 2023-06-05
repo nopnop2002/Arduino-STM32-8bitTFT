@@ -172,34 +172,6 @@ Define pins and Output Data Registers
 //Pin stm32 |PD15|PD14|PD13|PD12|PD11|PD10|PD9|PD8|
 #endif
 
-#if 0
-#define TFT_DATA       GPIOE
-#define TFT_D0         LL_GPIO_PIN_0
-#define TFT_D1         LL_GPIO_PIN_1
-#define TFT_D2         LL_GPIO_PIN_2
-#define TFT_D3         LL_GPIO_PIN_3
-#define TFT_D4         LL_GPIO_PIN_4
-#define TFT_D5         LL_GPIO_PIN_5
-#define TFT_D6         LL_GPIO_PIN_6
-#define TFT_D7         LL_GPIO_PIN_7
-//Port data |D7 |D6 |D5 |D4 |D3 |D2 |D1 |D0 |
-//Pin stm32 |PE7|PE6|PE5|PE4|PE3|PE2|PE1|PE0|
-#endif
-
-#if 0
-#define TFT_DATA       GPIOE
-#define TFT_D0         LL_GPIO_PIN_8
-#define TFT_D1         LL_GPIO_PIN_9
-#define TFT_D2         LL_GPIO_PIN_10
-#define TFT_D3         LL_GPIO_PIN_11
-#define TFT_D4         LL_GPIO_PIN_12
-#define TFT_D5         LL_GPIO_PIN_13
-#define TFT_D6         LL_GPIO_PIN_14
-#define TFT_D7         LL_GPIO_PIN_15
-//Port data |D7  |D6  |D5  |D4  |D3  |D2  |D1 |D0 |
-//Pin stm32 |PE15|PE14|PE13|PE12|PE11|PE10|PE9|PE8|
-#endif
-
 
 #define TFT_CNTRL      GPIOB
 #define LL_LOW(LL_GPIO_PIN)  LL_GPIO_WriteOutputPort(TFT_CNTRL, (LL_GPIO_ReadOutputPort(TFT_CNTRL) & ~(LL_GPIO_PIN)))
@@ -209,11 +181,11 @@ Define pins and Output Data Registers
 // Note:
 // PA15 PB3 PB4 is assigned to JTAG debug port by default on some boards.
 // Therefore, it may not be available by default.
-#define TFT_RD         LL_GPIO_PIN_0 // Px0
-#define TFT_WR         LL_GPIO_PIN_1 // Px1
-#define TFT_RS         LL_GPIO_PIN_5 // Px5
-#define TFT_CS         LL_GPIO_PIN_6 // Px6
-#define TFT_RST        LL_GPIO_PIN_7 // Px7
+#define TFT_RD         LL_GPIO_PIN_0 // PB0
+#define TFT_WR         LL_GPIO_PIN_1 // PB1
+#define TFT_RS         LL_GPIO_PIN_5 // PB5
+#define TFT_CS         LL_GPIO_PIN_6 // PB6
+#define TFT_RST        LL_GPIO_PIN_7 // PB7
 
 //#define DELAY          delayMicroseconds(10);
 #define DELAY          (void)0  // NOP
