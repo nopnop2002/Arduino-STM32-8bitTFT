@@ -37,32 +37,33 @@ https://github.com/adafruit/Adafruit-GFX-Library
 |3.3V|--|3.3V(*3)|
 |GND|--|GND|
 
-(\*1)
+(\*1)   
 You can change to other PB pin. To change the pin, change Arduino-STM32-8bitTFT.h.   
 Some boards assign PB3 PB4 to the JTAG debug port by default.   
 Therefore, PB3 and PB4 may not be available.   
 ```
-#define TFT_RD         LL_GPIO_PIN_0 // Px0
-#define TFT_WR         LL_GPIO_PIN_1 // Px1
-#define TFT_RS         LL_GPIO_PIN_5 // Px5
-#define TFT_CS         LL_GPIO_PIN_6 // Px6
-#define TFT_RST        LL_GPIO_PIN_7 // Px7
+#define TFT_RD         LL_GPIO_PIN_0 // PB0
+#define TFT_WR         LL_GPIO_PIN_1 // PB1
+#define TFT_RS         LL_GPIO_PIN_5 // PB5
+#define TFT_CS         LL_GPIO_PIN_6 // PB6
+#define TFT_RST        LL_GPIO_PIN_7 // PB7
 ```
 
-(\*2)
+(\*2)   
 Serial.print of NUCLEO and DISC1 gose to PA2   
 If you use NUCLEO or DISC1, you need to change it.   
 You can change to other port. To change the port, change Arduino-STM32-8bitTFT.h.   
 D0 to D7 are controlled using LL_GPIO_WriteOutputPort().   
 This function can change multiple IOs at once, but only IOs on the same port.   
 Therefore, D0 to D7 must be the same port.   
+If PORT-A is used for D0-D7, __all GPIOs on PORT-A cannot be used for other purposes.__   
 
-(\*3)
+(\*3)   
 When a regulator(It's often AMS1117) is mounted on the back, it's operated 5V.   
 When a regulator is NOT mounted on the back, it's operated 3.3V.   
 
 
-__Note__:Keep the wire length as short as possible.   
+__Note:Keep the wire length as short as possible.__   
 
 ----
 
