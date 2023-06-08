@@ -57,6 +57,7 @@ D0 to D7 are controlled using LL_GPIO_WriteOutputPort().
 This function can change multiple IOs at once, but only IOs on the same port.   
 Therefore, D0 to D7 must be the same port.   
 If PORT-A is used for D0-D7, __all GPIOs on PORT-A cannot be used for other purposes.__   
+Because LL_GPIO_WriteOutputPort() manipulates all GPIOs of PORT-A.   
 
 (\*3)   
 When a regulator(It's often AMS1117) is mounted on the back, it's operated 5V.   
