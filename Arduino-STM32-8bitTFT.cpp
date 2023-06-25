@@ -126,12 +126,23 @@ void STM32_TFT_8bit::setReadDataBus(void) {
 
 
 void STM32_TFT_8bit::write8(uint8_t bytes) {
+#if GPIO_INTERFACE == 0
   uint32_t PinMask = 0;
   for(uint8_t bits=0;bits<8;bits++) {
     uint8_t mask = 1<<bits;
     if ( (bytes & mask) != 0 ) PinMask= PinMask + _pins[bits];
   }
   LL_GPIO_WriteOutputPort(TFT_DATA, PinMask);
+#endif
+
+#if GPIO_INTERFACE == 1
+#if TFT_PORT == PORT_LOW // Use Px0 to Px7
+  TFT_DATA->ODR = bytes;
+#else  // Use Px8 to Px15
+  uint32_t _bytes = bytes << 8;
+  TFT_DATA->ODR = _bytes;
+#endif
+#endif
 }
 
 void STM32_TFT_8bit::writeCmdByte(uint8_t c) {

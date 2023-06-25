@@ -55,12 +55,20 @@ To use a different resolution TFT, change this or use setResolution().
 #define PINK        0xF81F
 #define GRAY        0x5AEB
 
+
+//#define GPIO_INTERFACE 0 // Use LL_GPIO_WriteOutputPort fuction
+#define GPIO_INTERFACE 1 // Use Port output data (ODR) Register
+
 /*
 Define pins and Output Data Registers
 */
 
+#define PORT_LOW       0
+#define PORT_HIGH      1
+
 #if 1
 #define TFT_DATA       GPIOA
+#define TFT_PORT       PORT_LOW
 #define TFT_D0         LL_GPIO_PIN_0
 #define TFT_D1         LL_GPIO_PIN_1
 #define TFT_D2         LL_GPIO_PIN_2
@@ -75,6 +83,7 @@ Define pins and Output Data Registers
 
 #if 0
 #define TFT_DATA       GPIOA
+#define TFT_PORT       PORT_HIGH
 #define TFT_D0         LL_GPIO_PIN_8
 #define TFT_D1         LL_GPIO_PIN_9
 #define TFT_D2         LL_GPIO_PIN_10
@@ -90,6 +99,7 @@ Define pins and Output Data Registers
 
 #if 0
 #define TFT_DATA       GPIOB
+#define TFT_PORT       PORT_LOW
 #define TFT_D0         LL_GPIO_PIN_0
 #define TFT_D1         LL_GPIO_PIN_1
 #define TFT_D2         LL_GPIO_PIN_2
@@ -104,6 +114,7 @@ Define pins and Output Data Registers
 
 #if 0
 #define TFT_DATA       GPIOB
+#define TFT_PORT       PORT_HIGH
 #define TFT_D0         LL_GPIO_PIN_8
 #define TFT_D1         LL_GPIO_PIN_9
 #define TFT_D2         LL_GPIO_PIN_10
@@ -118,6 +129,7 @@ Define pins and Output Data Registers
 
 #if 0
 #define TFT_DATA       GPIOC
+#define TFT_PORT       PORT_LOW
 #define TFT_D0         LL_GPIO_PIN_0
 #define TFT_D1         LL_GPIO_PIN_1
 #define TFT_D2         LL_GPIO_PIN_2
@@ -132,6 +144,7 @@ Define pins and Output Data Registers
 
 #if 0
 #define TFT_DATA       GPIOC
+#define TFT_PORT       PORT_HIGH
 #define TFT_D0         LL_GPIO_PIN_8
 #define TFT_D1         LL_GPIO_PIN_9
 #define TFT_D2         LL_GPIO_PIN_10
@@ -146,6 +159,7 @@ Define pins and Output Data Registers
 
 #if 0
 #define TFT_DATA       GPIOD
+#define TFT_PORT       PORT_LOW
 #define TFT_D0         LL_GPIO_PIN_0
 #define TFT_D1         LL_GPIO_PIN_1
 #define TFT_D2         LL_GPIO_PIN_2
@@ -160,6 +174,7 @@ Define pins and Output Data Registers
 
 #if 0
 #define TFT_DATA       GPIOD
+#define TFT_PORT       PORT_HIGH
 #define TFT_D0         LL_GPIO_PIN_8
 #define TFT_D1         LL_GPIO_PIN_9
 #define TFT_D2         LL_GPIO_PIN_10
@@ -173,7 +188,7 @@ Define pins and Output Data Registers
 #endif
 
 
-#define TFT_CNTRL      GPIOB
+#define TFT_CNTRL GPIOB
 #define LL_LOW(LL_GPIO_PIN)  LL_GPIO_WriteOutputPort(TFT_CNTRL, (LL_GPIO_ReadOutputPort(TFT_CNTRL) & ~(LL_GPIO_PIN)))
 #define LL_HIGH(LL_GPIO_PIN) LL_GPIO_WriteOutputPort(TFT_CNTRL, (LL_GPIO_ReadOutputPort(TFT_CNTRL) | LL_GPIO_PIN))
 

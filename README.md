@@ -50,14 +50,14 @@ Therefore, PB3 and PB4 may not be available.
 ```
 
 (\*2)   
-Serial.print of NUCLEO and DISC1 gose to PA2   
+Serial.print of NUCLEO and DISC1 gose to PA2.   
 If you use NUCLEO or DISC1, you need to change it.   
 You can change to other port. To change the port, change Arduino-STM32-8bitTFT.h.   
-D0 to D7 are controlled using LL_GPIO_WriteOutputPort().   
-This function can change multiple IOs at once, but only IOs on the same port.   
+D0 to D7 are controlled using CMSIS ODR Register.   
+This register can change multiple IOs at once, but only IOs on the same port.   
 Therefore, D0 to D7 must be the same port.   
 If PORT-A is used for D0-D7, __all GPIOs on PORT-A cannot be used for other purposes.__   
-Because LL_GPIO_WriteOutputPort() manipulates all GPIOs of PORT-A.   
+Because CMSIS ODR Register manipulates all GPIOs of PORT-A.   
 
 (\*3)   
 When a regulator(It's often AMS1117) is mounted on the back, it's operated 5V.   
@@ -99,10 +99,8 @@ I found that these display cannot follow high-speed GPIO-ON and GPIO-OFF.
 ----
 
 # Boards available    
-This library uses LL GPIO Generic Driver.   
-Probably all boards that can use the LL GPIO Generic Driver are available.   
-Here is support status of low-layer drivers.   
-https://www.st.com/content/st_com/en/search.html#q=Descriptions%20hal%20and%20ll-t=resources-page=1
+This library uses LL GPIO Generic Driver and CMSIS ODR Register.   
+Probably all boards have these available.   
 
 ----
 
@@ -175,20 +173,20 @@ Serial.print("Height: "); Serial.println(height); // You will see 400
 ----
 
 # Benchmark using ILI9341(240x320)   
-|Benchmark|STM32F103|STM32F303|STM32F401|STM32F407|STM32F446|ATmega328|
+|Benchmark|STM32F103|STM32F303|STM32F401|STM32F411|STM32F407|ATmega328|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-|Screen fill            |2241101|1854703|1208997|647337 |604184 |1379560|
-|Text                   |138955 |106085 |69792  |38303  |35748  |344024 |
-|Lines                  |1337689|999535 |660532 |361830 |337721 |3390180|
-|Horiz/Vert Lines       |185661 |152992 |99924  |53548  |49978  |144664 |
-|Rectangles (outline)   |120109 |98346  |64325  |34627  |32311  |104260 |
-|Rectangles (filled)    |4756300|3935313|2583183|1386162|1293716|3267476|
-|Circles (filled)       |610890 |471781 |310337 |167938 |156716 |1211484|
-|Circles (outline)      |588951 |439863 |290416 |159225 |148621 |1475108|
-|Triangles (outline)    |302008 |225153 |148665 |81285  |75894  |1075596|
-|Triangles (filled)     |1550456|1262459|821918 |440290 |410928 |1721636|
-|Rounded rects (outline)|262224 |201583 |132647 |72231  |67431  |506428 |
-|Rounded rects (filled) |4711541|3899510|2555561|1372596|1281003|3795228|
+|Screen fill            |737158 |358057 |247223 |216304 |141878 |1379560|
+|Text                   |58985  |37647  |25814  |22605  |15097  |344024 |
+|Lines                  |556282 |336332 |235522 |206064 |137693 |3390180|
+|Horiz/Vert Lines       |61299  |30165  |20825  |18221  |11958  |144664 |
+|Rectangles (outline)   |39994  |20040  |13835  |12106  |7953   |104260 |
+|Rectangles (filled)    |1530389|743518 |513383 |449170 |294609 |3267476|
+|Circles (filled)       |215466 |120380 |83212  |72840  |48080  |1211484|
+|Circles (outline)      |245302 |148705 |103680 |90733  |60769  |1475108|
+|Triangles (outline)    |123427 |74211  |51938  |45477  |30354  |1075596|
+|Triangles (filled)     |528554 |268777 |185711 |162496 |106788 |1721636|
+|Rounded rects (outline)|101407 |58746  |40758  |35682  |23791  |506428 |
+|Rounded rects (filled) |1534484|750346 |518107 |453320 |297450 |3795228|
 
 
 
