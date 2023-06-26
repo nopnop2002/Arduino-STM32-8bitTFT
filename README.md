@@ -61,11 +61,29 @@ Because CMSIS ODR Register manipulates all GPIOs of PORT-A.
 
 You can use any of the following:   
 - PORT-A LOW   
- TFT data|D7 |D6 |D5 |D4 |D3 |D2 |D1 |D0 |
- STM32 Pin|PA7|PA6|PA5|PA4|PA3|PA2|PA1|PA0|
+ TFT Pin|D7 |D6 |D5 |D4 |D3 |D2 |D1 |D0 |   
+ STM32 Pin|PA7|PA6|PA5|PA4|PA3|PA2|PA1|PA0|   
 - PORT-A HIGH   
- TFT data|D7  |D6  |D5  |D4  |D3  |D2  |D1 |D0 |   
+ TFT Pin|D7  |D6  |D5  |D4  |D3  |D2  |D1 |D0 |   
  STM32 Pin|PA15|PA14|PA13|PA12|PA11|PA10|PA9|PA8|   
+- PORT-B LOW   
+ TFT Pin|D7 |D6 |D5 |D4 |D3 |D2 |D1 |D0 |   
+ STM32 Pin|PB7|PB6|PB5|PB4|PB3|PB2|PB1|PB0|   
+- PORT-B HIGH   
+ TFT Pin|D7  |D6  |D5  |D4  |D3  |D2  |D1 |D0 |   
+ STM32 Pin|PB7|PB6|PB5|PB4|PB3|PB2|PB1|PB0|   
+- PORT-C LOW   
+ TFT Pin|D7 |D6 |D5 |D4 |D3 |D2 |D1 |D0 |   
+ STM32 Pin|PC7|PC6|PC5|PC4|PC3|PC2|PC1|PC0|   
+- PORT-C HIGH   
+ TFT Pin|D7  |D6  |D5  |D4  |D3  |D2  |D1 |D0 |   
+ STM32 Pin|PC15|PC14|PC13|PC12|PC11|PC10|PC9|PC8|   
+- PORT-D LOW   
+ TFT Pin|D7 |D6 |D5 |D4 |D3 |D2 |D1 |D0 |   
+ STM32 Pin|PD7|PD6|PD5|PD4|PD3|PD2|PD1|PD0|   
+- PORT-D HIGH   
+ TFT Pin|D7  |D6  |D5  |D4  |D3  |D2  |D1 |D0 |   
+ STM32 Pin|PD15|PD14|PD13|PD12|PD11|PD10|PD9|PD8|   
 
 
 (\*3)   
