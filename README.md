@@ -71,7 +71,7 @@ You can use any of the following:
  STM32 Pin|PB7|PB6|PB5|PB4|PB3|PB2|PB1|PB0|   
 - PORT-B HIGH   
  TFT Pin|D7  |D6  |D5  |D4  |D3  |D2  |D1 |D0 |   
- STM32 Pin|PB7|PB6|PB5|PB4|PB3|PB2|PB1|PB0|   
+ STM32 Pin|PB15|PB14|PB13|PB12|PB11|PB10|PB9|PB8|   
 - PORT-C LOW   
  TFT Pin|D7 |D6 |D5 |D4 |D3 |D2 |D1 |D0 |   
  STM32 Pin|PC7|PC6|PC5|PC4|PC3|PC2|PC1|PC0|   
