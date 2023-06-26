@@ -59,6 +59,15 @@ Therefore, D0 to D7 must be the same port.
 If PORT-A is used for D0-D7, __all GPIOs on PORT-A cannot be used for other purposes.__   
 Because CMSIS ODR Register manipulates all GPIOs of PORT-A.   
 
+You can use any of the following:   
+- PORT-A LOW   
+ Port data |D7  |D6  |D5  |D4  |D3  |D2  |D1  |D0  |   
+ Pin stm32 |PA7 |PA6 |PA5 |PA4 |PA3 |PA2 |PA1 |PA0 |   
+- PORT-A HIGH   
+ Port data |D7  |D6  |D5  |D4  |D3  |D2  |D1  |D0  |   
+ Pin stm32 |PA15|PA14|PA13|PA12|PA11|PA10|PA9 |PA8 |   
+
+
 (\*3)   
 When a regulator(It's often AMS1117) is mounted on the back, it's operated 5V.   
 When a regulator is NOT mounted on the back, it's operated 3.3V.   
