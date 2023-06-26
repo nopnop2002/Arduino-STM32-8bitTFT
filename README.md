@@ -61,11 +61,11 @@ Because CMSIS ODR Register manipulates all GPIOs of PORT-A.
 
 You can use any of the following:   
 - PORT-A LOW   
- Port data |D7  |D6  |D5  |D4  |D3  |D2  |D1  |D0  |   
- Pin stm32 |PA7 |PA6 |PA5 |PA4 |PA3 |PA2 |PA1 |PA0 |   
+ TFT data|D7 |D6 |D5 |D4 |D3 |D2 |D1 |D0 |
+ STM32 Pin|PA7|PA6|PA5|PA4|PA3|PA2|PA1|PA0|
 - PORT-A HIGH   
- Port data |D7  |D6  |D5  |D4  |D3  |D2  |D1  |D0  |   
- Pin stm32 |PA15|PA14|PA13|PA12|PA11|PA10|PA9 |PA8 |   
+ TFT data|D7  |D6  |D5  |D4  |D3  |D2  |D1 |D0 |   
+ STM32 Pin|PA15|PA14|PA13|PA12|PA11|PA10|PA9|PA8|   
 
 
 (\*3)   
