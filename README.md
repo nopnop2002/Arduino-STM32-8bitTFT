@@ -50,9 +50,9 @@ Therefore, PB3 and PB4 may not be available.
 ```
 
 (\*2)   
-Serial.print of NUCLEO and DISC1 gose to PA2.   
-If you use NUCLEO or DISC1, you need to change it.   
-You can change to other port. To change the port, change Arduino-STM32-8bitTFT.h.   
+__Serial.print of NUCLEO and DISC1 gose to PA2.__   
+__If you use NUCLEO or DISC1, you need to change to other GPIO.__   
+To change the port, change Arduino-STM32-8bitTFT.h.   
 D0 to D7 are controlled using CMSIS ODR Register.   
 This register can change multiple IOs at once, but only IOs on the same port.   
 Therefore, D0 to D7 must be the same port.   
@@ -193,27 +193,27 @@ Serial.print("Height: "); Serial.println(height); // You will see 400
 
 ![STM32F407](https://user-images.githubusercontent.com/6020549/77814593-a540b080-70f5-11ea-93c2-564f9bb0d817.JPG)
 
-- NUCLEO F446RE + ILI9341 2.4 inch TFT
+- NUCLEO F446RE + ILI9341 2.4 inch TFT (Use PC0-PC7 for D0-D7)
 
 ![8bitTFT](https://user-images.githubusercontent.com/6020549/77814188-2ac26180-70f2-11ea-8080-9e3cac22ce5a.JPG)
 
 ----
 
 # Benchmark using ILI9341(240x320)   
-|Benchmark|STM32F103|STM32F303|STM32F401|STM32F411|STM32F407|ATmega328|
+|Benchmark|STM32F103|STM32F303|STM32F401|STM32F411|STM32F407|STM32F446|ATmega328|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-|Screen fill            |737158 |358057 |247223 |216304 |141878 |1379560|
-|Text                   |58985  |37647  |25814  |22605  |15097  |344024 |
-|Lines                  |556282 |336332 |235522 |206064 |137693 |3390180|
-|Horiz/Vert Lines       |61299  |30165  |20825  |18221  |11958  |144664 |
-|Rectangles (outline)   |39994  |20040  |13835  |12106  |7953   |104260 |
-|Rectangles (filled)    |1530389|743518 |513383 |449170 |294609 |3267476|
-|Circles (filled)       |215466 |120380 |83212  |72840  |48080  |1211484|
-|Circles (outline)      |245302 |148705 |103680 |90733  |60769  |1475108|
-|Triangles (outline)    |123427 |74211  |51938  |45477  |30354  |1075596|
-|Triangles (filled)     |528554 |268777 |185711 |162496 |106788 |1721636|
-|Rounded rects (outline)|101407 |58746  |40758  |35682  |23791  |506428 |
-|Rounded rects (filled) |1534484|750346 |518107 |453320 |297450 |3795228|
+|Screen fill            |737158 |358057 |247223 |216304 |141878 |132427 |1379560|
+|Text                   |58985  |37647  |25814  |22605  |15097  |14272  |344024 |
+|Lines                  |556282 |336332 |235522 |206064 |137693 |130958 |3390180|
+|Horiz/Vert Lines       |61299  |30165  |20825  |18221  |11958  |11173  |144664 |
+|Rectangles (outline)   |39994  |20040  |13835  |12106  |7953   |7437   |104260 |
+|Rectangles (filled)    |1530389|743518 |513383 |449170 |294609 |274991 |3267476|
+|Circles (filled)       |215466 |120380 |83212  |72840  |48080  |45358  |1211484|
+|Circles (outline)      |245302 |148705 |103680 |90733  |60769  |57622  |1475108|
+|Triangles (outline)    |123427 |74211  |51938  |45477  |30354  |28766  |1075596|
+|Triangles (filled)     |528554 |268777 |185711 |162496 |106788 |99944  |1721636|
+|Rounded rects (outline)|101407 |58746  |40758  |35682  |23791  |22529  |506428 |
+|Rounded rects (filled) |1534484|750346 |518107 |453320 |297450 |277742 |3795228|
 
 
 
