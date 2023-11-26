@@ -109,11 +109,11 @@ __Note:Keep the wire length as short as possible.__
 - ILI9486 3.5inch 320x480 TFT-Shield   
 - RM68140 3.95inch 320x480 TFT-Shield   
 - ST7796 3.95inch 320x480 TFT-Shield   
+
+I found that these display cannot follow high-speed GPIO-ON and GPIO-OFF.   
 - OPEN-SMART ILI9225 TFT-Shield   
 - OPEN-SMART ILI9327 TFT-Shield   
 - OPEN-SMART ILI9340 TFT-Shield   
-
-I found that these display cannot follow high-speed GPIO-ON and GPIO-OFF.   
 - OPEN-SMART S6D1121 16Pin-Parallel   
 - OPEN-SMART ST7775 16Pin-Parallel   
 - OPEN-SMART ST7783 16Pin-Parallel   
