@@ -51,7 +51,7 @@ Therefore, PB3 and PB4 may not be available.
 
 (\*2)   
 __Serial.print of NUCLEO and DISC1 gose to PA2.__   
-__Serial.print of STM32G series gose to PA0.__   
+__Serial.print of STM32H series gose to PA0.__   
 __If you are using these, you need to change to other GPIO.__   
 To change the port, change Arduino-STM32-8bitTFT.h.   
 D0 to D7 are controlled using CMSIS ODR Register.   
