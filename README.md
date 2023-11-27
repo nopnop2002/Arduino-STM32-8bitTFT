@@ -40,7 +40,7 @@ https://github.com/adafruit/Adafruit-GFX-Library
 (\*1)   
 You can change to other PB pin. To change the pin, change Arduino-STM32-8bitTFT.h.   
 Some boards assign PB3 PB4 to the JTAG debug port by default.   
-Therefore, PB3 and PB4 may not be available.   
+Therefore, PB3 and PB4 may not be available for some boards.   
 These are controlled using LL_GPIO_WriteOutputPort().   
 
 ```
@@ -70,12 +70,6 @@ You can use any of the following:
 - PORT-A HIGH   
  TFT Pin|D7  |D6  |D5  |D4  |D3  |D2  |D1 |D0 |   
  STM32 Pin|PA15|PA14|PA13|PA12|PA11|PA10|PA9|PA8|   
-- PORT-B LOW   
- TFT Pin|D7 |D6 |D5 |D4 |D3 |D2 |D1 |D0 |   
- STM32 Pin|PB7|PB6|PB5|PB4|PB3|PB2|PB1|PB0|   
-- PORT-B HIGH   
- TFT Pin|D7  |D6  |D5  |D4  |D3  |D2  |D1 |D0 |   
- STM32 Pin|PB15|PB14|PB13|PB12|PB11|PB10|PB9|PB8|   
 - PORT-C LOW   
  TFT Pin|D7 |D6 |D5 |D4 |D3 |D2 |D1 |D0 |   
  STM32 Pin|PC7|PC6|PC5|PC4|PC3|PC2|PC1|PC0|   
