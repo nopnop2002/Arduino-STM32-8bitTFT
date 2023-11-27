@@ -13,7 +13,7 @@ https://github.com/Bodmer/JPEGDecoder
 # Wirering for TFT built-in SD-CARD Reader   
 STM32 has multiple SPI ports.   
 The number of ports varies by model.   
-This project uses SPI_2 as the SPI object.   
+This project uses SPI_2 as the SPI port.   
 The GPIO used for SPI_2 varies by board.   
 GPIO using SPI_2 should check the following files:   
 ```
