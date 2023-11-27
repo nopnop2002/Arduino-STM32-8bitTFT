@@ -20,54 +20,76 @@
 
 
 #include <Adafruit_GFX.h>
-#include <SdFat.h>        // https://github.com/greiman/SdFat
-#include <JPEGDecoder.h>  // https://github.com/Bodmer/JPEGDecoder
 #include "Arduino-STM32-8bitTFT.h"
+#include <SdFat.h> // https://github.com/greiman/SdFat
+#include <sdios.h> // https://github.com/greiman/SdFat
+#include <JPEGDecoder.h> // https://github.com/Bodmer/JPEGDecoder
 
 STM32_TFT_8bit tft;
 
-// Use SPI1 for STM32F103
-#if 0
-#define SD_CS   PA4
-#define SD_SCLK PA5
-#define SD_MISO PA6
-#define SD_MOSI PA7
-#endif
+// SD_FAT_TYPE = 0 for SdFat/File as defined in SdFatConfig.h,
+// 1 for FAT16/FAT32, 2 for exFAT, 3 for FAT16/FAT32 and exFAT.
+#define SD_FAT_TYPE 1
 
-// Use SPI2 for STM32F103
-#if 1
+// Define SPI_2 object.
+// STM32F103's SPI_2 object uses the following GPIO.
 #define SD_CS   PB12
 #define SD_SCLK PB13
 #define SD_MISO PB14
 #define SD_MOSI PB15
-#endif
+static SPIClass SPI_2 (SD_MOSI, SD_MISO, SD_SCLK, SD_CS);
 
-SdFat SD;
+// Define SdSpiConfig using SPI_2 object.
+#define SetSDSpeed 48
+#define SD_CONFIG SdSpiConfig (SD_CS, DEDICATED_SPI, SD_SCK_MHZ (SetSDSpeed), &SPI_2)
+//------------------------------------------------------------------------------
+
+#if SD_FAT_TYPE == 0
+SdFat sd;
+File file;
+File root;
+#elif SD_FAT_TYPE == 1
+SdFat32 sd;
+File32 file;
+File32 root;
+#elif SD_FAT_TYPE == 2
+SdExFat sd;
+ExFile file;
+ExFile root;
+#elif SD_FAT_TYPE == 3
+SdFs sd;
+FsFile file;
+FsFile root;
+#endif  // SD_FAT_TYPE
 
 //------------------------------------------------------------------------------
-// print error msg, any SD error codes, and halt.
-// store messages in flash
-#define errorExit(msg) errorHalt(F(msg))
-#define initError(msg) initErrorHalt(F(msg))
+// Store error strings in flash to save RAM.
+#define error(s) sd.errorHalt(&Serial, F(s))
 //------------------------------------------------------------------------------
 
 #define OPT_REDUCTION 1
 #define OPT_CENTER 2
 
-#define MaxJPEG 100
-int numJPEG;
-uint16_t JPEGIndex[MaxJPEG];
+#define maxFileCount 100
+int jpegFileCount;
+uint16_t jpegFileIndex[maxFileCount];
+
+int getFileNameByIndex(int index, char * fname, size_t fnameSize)
+{
+  if (!file.open(&root, index, O_READ)) {
+    error("open file failed");
+  }
+  //Serial.println("open ok ");
+  file.getName(fname, fnameSize);
+  //Serial.println("fname=" + String(fname));
+  file.close();
+  return strlen(fname);
+}
 
 void setup() {
   delay(1000);
   Serial.begin(115200);
   Serial.println("Arduino-STM32-8bitTFT");
-
-  // Set pins used in SPI
-  SPI.setMOSI(SD_MOSI);
-  SPI.setMISO(SD_MISO);
-  SPI.setSCLK(SD_SCLK);
-  SPI.setSSEL(SD_CS);
 
   uint32_t ID = tft.readID();
   tft.setResolution(320, 480); // Set your resolution
@@ -80,33 +102,57 @@ void setup() {
   Serial.print("Height: "); Serial.println(height);
   if (width < height) tft.setRotation(3);
 
-  // initialize the second card
-  //if (!SD.begin(SD_CS, SD_SCK_MHZ(18))) {
-  if (!SD.begin(SD_CS)) {
-    SD.initError("sd:");
+  // Initialize the SD card.
+  if (!sd.begin(SD_CONFIG)) {
+    sd.initErrorHalt(&Serial);
   }
 
-  // Show JPEG file list on console
-  numJPEG = showJpegFileList(JPEGIndex, MaxJPEG);
-  Serial.println("numJPEG=" + String(numJPEG));
+  jpegFileCount = 0;
+  if (!root.open("/")) {
+    error("open root");
+  }
+  while (file.openNext(&root, O_RDONLY)) {
+    // Skip directories and hidden files.
+    if (!file.isSubDir() && !file.isHidden()) {
+      // get file name
+      char fname[32];
+      file.getName(fname, sizeof(fname));
+      Serial.print("fname=");
+      Serial.println(fname);
+      //jpegFileCount++;
+
+      // Is jpeg file
+      if (strstr(fname, ".jpg") != 0) {
+        // Save dirIndex of file in directory.
+        if (jpegFileCount < maxFileCount) {
+          jpegFileIndex[jpegFileCount++] = file.dirIndex();
+        }
+      }
+    }
+    file.close();
+  }
+  Serial.println("jpegFileCount=" + String(jpegFileCount));
+  
+  for (int ipos=0;ipos<jpegFileCount;ipos++) {
+    char fname[32];
+    getFileNameByIndex(jpegFileIndex[ipos], fname, sizeof(fname));   
+  }
 }
 
 
 void loop(void) {
   static int ipos = 0;
-  char fname[32];
 
   // Get JPEG file name
-  int len = getFileName(JPEGIndex[ipos], fname, sizeof(fname));
-  
-  // Draw JPEG image with recuction
+  char fname[32];
+  int len = getFileNameByIndex(jpegFileIndex[ipos], fname, sizeof(fname));
+
+  // Draw JPEG image with reduction
   tft.fillScreen(random(0x10000));
   drawFSJpeg(fname, 0, 0, OPT_REDUCTION + OPT_CENTER);
  
   ipos++;
-  if (ipos == numJPEG) ipos = 0;
+  if (ipos == jpegFileCount) ipos = 0;
  
   delay(5000);
 }
-
-

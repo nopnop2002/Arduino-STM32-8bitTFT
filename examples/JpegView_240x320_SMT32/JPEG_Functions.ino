@@ -43,7 +43,7 @@ void drawFSJpeg(const char *filename, int xpos, int ypos, int options) {
   Serial.println("=====================================");
 
   // Open the file (the Jpeg decoder library will close it)
-  File jpgFile = SD.open( filename, FILE_READ);  // file handle reference for SD library
+  File jpgFile = sd.open( filename, FILE_READ);  // file handle reference for SD library
  
   if ( !jpgFile ) {
     Serial.print("ERROR: File \""); Serial.print(filename); Serial.println ("\" not found!");
@@ -64,6 +64,7 @@ void drawFSJpeg(const char *filename, int xpos, int ypos, int options) {
   else {
     Serial.println("Jpeg file format not supported!");
   }
+  jpgFile.close();
 }
 
 //====================================================================================
@@ -271,7 +272,7 @@ void createArray(const char *filename) {
 
   File jpgFile;  // File handle reference For SD library
   
-  if ( !( jpgFile = SD.open( filename, FILE_READ))) {
+  if ( !( jpgFile = sd.open( filename, FILE_READ))) {
     Serial.println(F("JPEG file not found"));
     return;
   }
@@ -306,97 +307,5 @@ void createArray(const char *filename) {
   jpgFile.close();
 }
 
-// Function to print all timestamps.
-void printTimestamps(SdFile& f) {
-  dir_t d;
-  if (!f.dirEntry(&d)) {
-    return;
-  }
-
-  //Serial.print("Creation: ");
-  //f.printFatDate(d.creationDate);
-  //Serial.print(" ");
-  //f.printFatTime(d.creationTime);
-
-  //Serial.print("Modify: ");
-  f.printFatDate(d.lastWriteDate);
-  Serial.print(" ");
-  f.printFatTime(d.lastWriteTime);
-
-  //Serial.print("Access: ");
-  //f.printFatDate(d.lastAccessDate);
-  Serial.print(" ");
-}
-
-// Show JPEG file list on console
-int showJpegFileList (uint16_t * fileIndexs, int MaxIndex) {
-  SdFile file;
-  SdFile dirFile;
-  SdFile file2;
-
-  // open root directory.
-  if (!dirFile.open("/", O_READ)) {
-    SD.errorHalt("open root failed");
-  }
-
-  Serial.println("--------------------------------------------");
-  uint16_t n = 0;
-  while (n < MaxIndex && file.openNext(&dirFile, O_READ)) {
-
-    // Skip directories and hidden files.
-    if (!file.isSubDir() && !file.isHidden()) {
-
-      // open file.
-      if (!file2.open(&dirFile, file.dirIndex(), O_READ)) {
-        SD.errorHalt(F("open"));
-      }
-
-      // get file size  
-      char buf[60];
-      uint32_t fsz = file2.fileSize();
-
-      // get file name
-      char fname[20];
-      file2.getName(fname,20);
-      //Serial.print("fname=");
-      //Serial.println(fname);
-
-      // Is JPEG file
-      if (strstr(fname, ".jpg") != 0) {
-        printTimestamps(file2);
-        sprintf(buf,"%10d %s",fsz,fname);
-        Serial.println(buf);
-        // Save dirIndex of file in directory.
-        fileIndexs[n++] = file.dirIndex();
-      }
-      file2.close();
-    }
-    file.close();
-  }
-  Serial.println("--------------------------------------------");
-  return n;
-}
-
-
-int getFileName(int index, char * fname, size_t fnameSize)
-{
-  // Get JPEG file name
-  //Serial.println("index=" + String(index));
-  SdFile file;
-  SdFile dirFile;
-  if (!dirFile.open("/", O_READ)) {
-    SD.errorHalt("open root failed");
-  }
-  if (!file.open(&dirFile, index, O_READ)) {
-    SD.errorHalt(F("open file failed"));
-  }
-  //Serial.print("open ok ");
-  file.getName(fname, fnameSize);
-  //Serial.println("fname=" + String(fname));
-  file.close();
-  dirFile.close();
-  return strlen(fname);
-}
 
 //====================================================================================
-
