@@ -51,7 +51,8 @@ Therefore, PB3 and PB4 may not be available.
 
 (\*2)   
 __Serial.print of NUCLEO and DISC1 gose to PA2.__   
-__If you use NUCLEO or DISC1, you need to change to other GPIO.__   
+__Serial.print of STM32G series gose to PA0.__   
+__If you are using these, you need to change to other GPIO.__   
 To change the port, change Arduino-STM32-8bitTFT.h.   
 D0 to D7 are controlled using CMSIS ODR Register.   
 This register can change multiple IOs at once, but only IOs on the same port.   
@@ -197,7 +198,7 @@ Serial.print("Height: "); Serial.println(height); // You will see 400
 
 ![8bitTFT](https://user-images.githubusercontent.com/6020549/77814188-2ac26180-70f2-11ea-8080-9e3cac22ce5a.JPG)
 
-- STM32H750  + ILI9341 2.4 inch TFT
+- STM32H750  + ILI9341 2.4 inch TFT (Use PC0-PC7 for D0-D7)
 
 ![STM32H750](https://github.com/nopnop2002/Arduino-STM32-8bitTFT/assets/6020549/d61c0ed1-f251-464b-a680-735ffa685785)
 
