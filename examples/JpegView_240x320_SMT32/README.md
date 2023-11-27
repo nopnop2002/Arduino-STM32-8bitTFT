@@ -11,6 +11,8 @@ https://github.com/greiman/SdFat
 https://github.com/Bodmer/JPEGDecoder   
 
 # Wirering for TFT built-in SD-CARD Reader   
+STM32 has multiple SPI buses.   
+The number of buses depends on the model.   
 This project uses SPI_2 as the SPI object.   
 The GPIO used for SPI_2 varies by board.   
 GPIO using SPI_2 should check the following files:   
