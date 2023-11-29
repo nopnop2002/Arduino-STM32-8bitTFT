@@ -212,6 +212,10 @@ Serial.print("Height: "); Serial.println(height); // You will see 400
 
 ![8bitTFT](https://user-images.githubusercontent.com/6020549/77814188-2ac26180-70f2-11ea-8080-9e3cac22ce5a.JPG)
 
+- STM32G431 + ILI9341 2.4 inch TFT (Use Serial remapping)
+
+![STM32G431](https://github.com/nopnop2002/Arduino-STM32-8bitTFT/assets/6020549/3ff0df09-08d8-418a-a346-5b17dc0ef67b)
+
 - STM32H750  + ILI9341 2.4 inch TFT (Use PC0-PC7 for D0-D7)
 
 ![STM32H750](https://github.com/nopnop2002/Arduino-STM32-8bitTFT/assets/6020549/d61c0ed1-f251-464b-a680-735ffa685785)
