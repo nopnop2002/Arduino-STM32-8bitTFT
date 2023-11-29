@@ -58,7 +58,7 @@ __Serial.print of STM32G series gose to PA2.__
 __Serial.print of STM32H series gose to PA0.__   
 __If you are using these, you will need to do one of the following:__   
 
-### Change GPIO from D0 to D7   
+#### Change GPIO from D0 to D7   
 To change the port, change Arduino-STM32-8bitTFT.h.   
 D0 to D7 are controlled using CMSIS ODR Register.   
 This register can change multiple IOs at once, but only IOs on the same port.   
@@ -86,7 +86,7 @@ You can use any of the following:
  TFT Pin|D7  |D6  |D5  |D4  |D3  |D2  |D1 |D0 |   
  STM32 Pin|PD15|PD14|PD13|PD12|PD11|PD10|PD9|PD8|   
 
-### Change default Serial instance pins   
+#### Change default Serial instance pins   
 ```
   Serial.setTx(PB3);
   Serial.setRx(PB4);
