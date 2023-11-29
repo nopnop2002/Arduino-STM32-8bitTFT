@@ -139,6 +139,10 @@ I found that these display cannot follow high-speed GPIO-ON and GPIO-OFF.
 # Boards available    
 This library uses LL GPIO Generic Driver and CMSIS ODR Register.   
 Probably all boards have these available.   
+I tested with these.   
+- STM32F series   
+- STM32G series   
+- STM32H series   
 
 ----
 
