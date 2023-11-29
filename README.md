@@ -90,6 +90,7 @@ You can use any of the following:
 You can use another GPIO as a Serial object.   
 GPIO that can be used as a Serial object differs depending on the MCU.   
 You can know which GPIOs can be used in PeripheralPins.c of the MCU.   
+PeripheralPins.c is [here](https://github.com/stm32duino/Arduino_Core_STM32/tree/main/variants).   
 ```
   Serial.setTx(PB3);
   Serial.setRx(PB4);
