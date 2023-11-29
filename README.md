@@ -87,6 +87,9 @@ You can use any of the following:
  STM32 Pin|PD15|PD14|PD13|PD12|PD11|PD10|PD9|PD8|   
 
 #### Change default Serial instance pins   
+You can use another GPIO as a Serial object.   
+GPIO that can be used as a Serial object differs depending on the MCU.   
+You can know which GPIOs can be used in PeripheralPins.c of the MCU.   
 ```
   Serial.setTx(PB3);
   Serial.setRx(PB4);
