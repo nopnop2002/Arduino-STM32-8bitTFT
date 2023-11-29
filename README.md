@@ -223,7 +223,7 @@ Serial.print("Height: "); Serial.println(height); // You will see 400
 ----
 
 # Benchmark using ILI9341(240x320)   
-|Benchmark|STM32F072|STM32F103|STM32F303|STM32F401|STM32F411|STM32F407|STM32F446|STM32G431|STM32H750|ATmega328|
+|Benchmark|F072|F103|F303|F401|F411|F407|F446|G431|H750|ATmega328|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 |Screen fill            |713964 |737158 |358057 |247223 |216304 |141878 |132427 |140239 |222478 |1379560|
 |Text                   |73319  |58985  |37647  |25814  |22605  |15097  |14272  |16275  |14691  |344024 |
