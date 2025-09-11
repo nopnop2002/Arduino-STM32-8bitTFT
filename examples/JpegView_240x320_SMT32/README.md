@@ -10,7 +10,7 @@ https://github.com/greiman/SdFat
 - JPEG decoder library V1.8.1   
 https://github.com/Bodmer/JPEGDecoder   
 
-# Wirering for TFT built-in SD-CARD Reader   
+# Wiring for TFT built-in SD-CARD Reader   
 STM32 has multiple SPI ports.   
 The number of ports varies by model.   
 This project uses SPI_2 as the SPI port.   

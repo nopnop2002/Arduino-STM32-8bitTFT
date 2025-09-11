@@ -16,7 +16,7 @@ https://github.com/adafruit/Adafruit-GFX-Library
 
 ----
 
-# Wirering for 8bit Parallel TFT   
+# Wiring for 8bit Parallel TFT   
 
 |TFT||STM32|
 |:-:|:-:|:-:|
