@@ -87,13 +87,35 @@ You can use any of the following:
  STM32 Pin|PD15|PD14|PD13|PD12|PD11|PD10|PD9|PD8|   
 
 #### Change default Serial instance pins   
-You can use another GPIO as a Serial object.   
+The STM32 can use multiple GPIOs as serial ports.    
+For example, on BluePill/BlackPill, the following GPIOs can be used as serial ports:   
+```
+//*** UART ***
+
+WEAK const PinMap PinMap_UART_TX[] = {
+  {PA_2,  USART2, STM_PIN_DATA(STM_MODE_AF_PP, GPIO_PULLUP, AFIO_USART2_DISABLE)},
+  {PA_9,  USART1, STM_PIN_DATA(STM_MODE_AF_PP, GPIO_PULLUP, AFIO_USART1_DISABLE)},
+  {PB_6,  USART1, STM_PIN_DATA(STM_MODE_AF_PP, GPIO_PULLUP, AFIO_USART1_ENABLE)},
+  {PB_10, USART3, STM_PIN_DATA(STM_MODE_AF_PP, GPIO_PULLUP, AFIO_NONE)},
+  {NC,    NP,     0}
+};
+
+WEAK const PinMap PinMap_UART_RX[] = {
+  {PA_3,  USART2, STM_PIN_DATA(STM_MODE_INPUT, GPIO_PULLUP, AFIO_USART2_DISABLE)},
+  {PA_10, USART1, STM_PIN_DATA(STM_MODE_INPUT, GPIO_PULLUP, AFIO_USART1_DISABLE)},
+  {PB_7,  USART1, STM_PIN_DATA(STM_MODE_INPUT, GPIO_PULLUP, AFIO_USART1_ENABLE)},
+  {PB_11, USART3, STM_PIN_DATA(STM_MODE_INPUT, GPIO_PULLUP, AFIO_NONE)},
+  {NC,    NP,     0}
+};
+```
+
+You can use these GPIOs as Serial objects.   
 GPIO that can be used as a Serial object differs depending on the MCU.   
 You can know which GPIOs can be used in PeripheralPins.c of the MCU.   
 PeripheralPins.c is [here](https://github.com/stm32duino/Arduino_Core_STM32/tree/main/variants).   
 ```
-  Serial.setTx(PB3);
-  Serial.setRx(PB4);
+  Serial.setTx(PB10);
+  Serial.setRx(PB11);
   Serial.begin(115200);
 ```
 
