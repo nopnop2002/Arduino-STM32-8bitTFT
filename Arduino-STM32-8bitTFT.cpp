@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <Arduino-STM32-8bitTFT.h>
+#include "Arduino-STM32-8bitTFT.h"
 
 #define MIPI_DCS_REV1   (1<<0)
 #define AUTO_READINC    (1<<1)
