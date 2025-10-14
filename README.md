@@ -109,7 +109,6 @@ WEAK const PinMap PinMap_UART_RX[] = {
 };
 ```
 
-You can use these GPIOs as Serial objects.   
 GPIO that can be used as a Serial object differs depending on the MCU.   
 You can know which GPIOs can be used in PeripheralPins.c of the MCU.   
 PeripheralPins.c is [here](https://github.com/stm32duino/Arduino_Core_STM32/tree/main/variants).   
