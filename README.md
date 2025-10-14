@@ -108,15 +108,16 @@ WEAK const PinMap PinMap_UART_RX[] = {
   {NC,    NP,     0}
 };
 ```
-
-GPIO that can be used as a Serial object differs depending on the MCU.   
-You can know which GPIOs can be used in PeripheralPins.c of the MCU.   
-PeripheralPins.c is [here](https://github.com/stm32duino/Arduino_Core_STM32/tree/main/variants).   
+The example below uses PB10/PB11 as a Serial Object.   
 ```
   Serial.setTx(PB10);
   Serial.setRx(PB11);
   Serial.begin(115200);
 ```
+
+GPIO that can be used as a Serial object differs depending on the MCU.   
+You can know which GPIOs can be used in PeripheralPins.c of the MCU.   
+PeripheralPins.c is [here](https://github.com/stm32duino/Arduino_Core_STM32/tree/main/variants).   
 
 (\*3)   
 When a regulator(It's often AMS1117) is mounted on the back, it's operated 5V.   
