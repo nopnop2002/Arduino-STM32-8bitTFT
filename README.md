@@ -38,7 +38,8 @@ https://github.com/adafruit/Adafruit-GFX-Library
 |GND|--|GND|
 
 (\*1)   
-You can change to other PB pin. To change the pin, change Arduino-STM32-8bitTFT.h.   
+You can change to other PB pin.   
+To change the pin, change Arduino-STM32-8bitTFT.h.   
 Some boards assign PB3 and PB4 to the JTAG debug port by default.   
 Therefore, depending on the board, PB3 and PB4 may not be available as GPIO.   
 These GPIO are controlled using LL_GPIO_WriteOutputPort().   
@@ -51,15 +52,42 @@ These GPIO are controlled using LL_GPIO_WriteOutputPort().
 #define TFT_RST        LL_GPIO_PIN_7 // PB7
 ```
 
+These GPIOs can be changed to PC ports.   
+
+```
+//#define TFT_CNTRL GPIOB
+#define TFT_CNTRL GPIOC
+
+#define TFT_RD         LL_GPIO_PIN_0 // PC0
+#define TFT_WR         LL_GPIO_PIN_1 // PC1
+#define TFT_RS         LL_GPIO_PIN_5 // PC5
+#define TFT_CS         LL_GPIO_PIN_6 // PC6
+#define TFT_RST        LL_GPIO_PIN_7 // PC7
+```
+
+These GPIOs can be changed to PD ports.   
+
+```
+//#define TFT_CNTRL GPIOB
+#define TFT_CNTRL GPIOD
+
+#define TFT_RD         LL_GPIO_PIN_0 // PD0
+#define TFT_WR         LL_GPIO_PIN_1 // PD1
+#define TFT_RS         LL_GPIO_PIN_5 // PD5
+#define TFT_CS         LL_GPIO_PIN_6 // PD6
+#define TFT_RST        LL_GPIO_PIN_7 // PD7
+```
 
 (\*2)   
 __Serial.print of NUCLEO and DISC1 gose to PA2.__   
 __Serial.print of STM32G series gose to PA2.__   
 __Serial.print of STM32H series gose to PA0.__   
 __If you are using these, you will need to do one of the following:__   
+- Change D0 to D7 to another GPIO   
+- Change default Serial instance pins   
 
-#### Change GPIO from D0 to D7   
-To change the port, change Arduino-STM32-8bitTFT.h.   
+### How to change D0 to D7 to another GPIO   
+To change the GPIOs for LCD_D0 to D7, modify Arduino-STM32-8bitTFT.h.   
 D0 to D7 are controlled using CMSIS ODR Register.   
 This register can change multiple IOs at once, but only IOs on the same port.   
 Therefore, D0 to D7 must be the same port.   
@@ -86,7 +114,7 @@ You can use any of the following:
  TFT Pin|D7  |D6  |D5  |D4  |D3  |D2  |D1 |D0 |   
  STM32 Pin|PD15|PD14|PD13|PD12|PD11|PD10|PD9|PD8|   
 
-#### Change default Serial instance pins   
+### How to change default Serial instance pins   
 The STM32 can use multiple GPIOs as serial ports.    
 For example, on BluePill/BlackPill, the following GPIOs can be used as serial ports:   
 ```
