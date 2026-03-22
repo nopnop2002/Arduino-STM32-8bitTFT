@@ -66,6 +66,11 @@ Define pins and Output Data Registers
 #define PORT_LOW       0
 #define PORT_HIGH      1
 
+#if !defined(TFT_DATA) || !defined(TFT_D0) || !defined(TFT_D1) || \
+    !defined(TFT_D2) || !defined(TFT_D3) || !defined(TFT_D4) || \
+    !defined(TFT_D5) || !defined(TFT_D6) || !defined(TFT_D7) || \
+    !defined(TFT_PORT)
+
 #if 1
 #define TFT_DATA       GPIOA
 #define TFT_PORT       PORT_LOW
@@ -172,6 +177,8 @@ Define pins and Output Data Registers
 //Pin stm32 |PD7|PD6|PD5|PD4|PD3|PD2|PD1|PD0|
 #endif
 
+#endif
+
 #if 0
 #define TFT_DATA       GPIOD
 #define TFT_PORT       PORT_HIGH
@@ -188,7 +195,9 @@ Define pins and Output Data Registers
 #endif
 
 
+#ifndef TFT_CNTRL
 #define TFT_CNTRL GPIOB
+#endif
 #define LL_LOW(LL_GPIO_PIN)  LL_GPIO_WriteOutputPort(TFT_CNTRL, (LL_GPIO_ReadOutputPort(TFT_CNTRL) & ~(LL_GPIO_PIN)))
 #define LL_HIGH(LL_GPIO_PIN) LL_GPIO_WriteOutputPort(TFT_CNTRL, (LL_GPIO_ReadOutputPort(TFT_CNTRL) | LL_GPIO_PIN))
 
@@ -196,11 +205,21 @@ Define pins and Output Data Registers
 // Note:
 // PA15 PB3 PB4 is assigned to JTAG debug port by default on some boards.
 // Therefore, it may not be available by default.
+#ifndef TFT_RD
 #define TFT_RD         LL_GPIO_PIN_0 // PB0
+#endif
+#ifndef TFT_WR
 #define TFT_WR         LL_GPIO_PIN_1 // PB1
+#endif
+#ifndef TFT_RS
 #define TFT_RS         LL_GPIO_PIN_5 // PB5
+#endif
+#ifndef TFT_CS
 #define TFT_CS         LL_GPIO_PIN_6 // PB6
+#endif
+#ifndef TFT_RST
 #define TFT_RST        LL_GPIO_PIN_7 // PB7
+#endif
 
 //#define DELAY          delayMicroseconds(10);
 #define DELAY          (void)0  // NOP
