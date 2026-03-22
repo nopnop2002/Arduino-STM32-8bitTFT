@@ -16,6 +16,9 @@
 #include <Adafruit_GFX.h>
 #include "Arduino-STM32-8bitTFT.h"
 
+// If you want to change the default serial instance pin, set it to 1.
+#define REMAP 1
+
 STM32_TFT_8bit tft;
 
 float sx = 0, sy = 1, mx = 1, my = 0, hx = -1, hy = 0;    // Saved H, M, S x & y multipliers
@@ -28,15 +31,21 @@ boolean initial = 1;
 
 void setup(void) {
   delay(1000);
+#if REMAP
+  Serial.setTx(PB10); // TX
+  Serial.setRx(PB11); // RX
+#endif
   Serial.begin(115200);
   Serial.print("__TIME__=");
   Serial.println(__TIME__);
   hh=conv2d(__TIME__);
   mm=conv2d(__TIME__+3);
   ss=conv2d(__TIME__+6);  // Get H, M, S from compile time
+
   uint16_t ID = tft.readID();
   Serial.print("Device ID: 0x"); Serial.println(ID, HEX);
   tft.begin(ID);
+  
   uint16_t wid = tft.width();
   uint16_t ht = tft.height();
   Serial.println("width=" + String(wid) + " height=" + String(ht));
@@ -152,4 +161,3 @@ static uint8_t conv2d(const char* p) {
     v = *p - '0';
   return 10 * v + *++p - '0';
 }
-

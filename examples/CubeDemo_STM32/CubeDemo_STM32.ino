@@ -18,6 +18,9 @@
 #include <Adafruit_GFX.h>
 #include "Arduino-STM32-8bitTFT.h"
 
+// If you want to change the default serial instance pin, set it to 1.
+#define REMAP 1
+
 STM32_TFT_8bit tft;
 
 #define BACK_COLOR WHITE  // You can change
@@ -127,6 +130,10 @@ void cube(float *px, float *py, float *pz, float *p2x, float *p2y, int *r, uint1
 
 void setup() {
   delay(1000);
+#if REMAP
+  Serial.setTx(PB10); // TX
+  Serial.setRx(PB11); // RX
+#endif
   Serial.begin(115200);
   Serial.println("STM32_TFT_8bit Test!"); 
 
