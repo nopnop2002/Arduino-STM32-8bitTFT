@@ -1551,7 +1551,8 @@ void STM32_TFT_8bit::invertDisplay(boolean i) {
 
 uint8_t STM32_TFT_8bit::read8(void){
   uint32_t temp = LL_GPIO_ReadInputPort(TFT_DATA);
-  return temp & 0xFF;
+  if (TFT_PORT == PORT_LOW) return temp & 0xFF;
+  return (temp >> 8) & 0xFF;
 }
 
 
