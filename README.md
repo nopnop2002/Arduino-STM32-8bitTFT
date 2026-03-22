@@ -79,6 +79,7 @@ These GPIOs can be changed to PD ports.
 ```
 
 (\*2)   
+The output destination of Serial.print conflicts with these GPIOs.   
 The output destination of Serial.print differs depending on the Board Part Number.   
 - F103 BluePill:PA9   
 - F103 BlackPill:PA9   
