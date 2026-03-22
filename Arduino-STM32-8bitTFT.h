@@ -69,14 +69,6 @@ Define pins and Output Data Registers
 #if 1
 #define TFT_DATA       GPIOA
 #define TFT_PORT       PORT_LOW
-#define TFT_D0         LL_GPIO_PIN_0
-#define TFT_D1         LL_GPIO_PIN_1
-#define TFT_D2         LL_GPIO_PIN_2
-#define TFT_D3         LL_GPIO_PIN_3
-#define TFT_D4         LL_GPIO_PIN_4
-#define TFT_D5         LL_GPIO_PIN_5
-#define TFT_D6         LL_GPIO_PIN_6
-#define TFT_D7         LL_GPIO_PIN_7
 //Port data |D7 |D6 |D5 |D4 |D3 |D2 |D1 |D0 |
 //Pin stm32 |PA7|PA6|PA5|PA4|PA3|PA2|PA1|PA0|
 #endif
@@ -84,14 +76,6 @@ Define pins and Output Data Registers
 #if 0
 #define TFT_DATA       GPIOA
 #define TFT_PORT       PORT_HIGH
-#define TFT_D0         LL_GPIO_PIN_8
-#define TFT_D1         LL_GPIO_PIN_9
-#define TFT_D2         LL_GPIO_PIN_10
-#define TFT_D3         LL_GPIO_PIN_11
-#define TFT_D4         LL_GPIO_PIN_12
-#define TFT_D5         LL_GPIO_PIN_13
-#define TFT_D6         LL_GPIO_PIN_14
-#define TFT_D7         LL_GPIO_PIN_15
 //Port data |D7  |D6  |D5  |D4  |D3  |D2  |D1 |D0 |
 //Pin stm32 |PA15|PA14|PA13|PA12|PA11|PA10|PA9|PA8|
 #endif
@@ -100,14 +84,6 @@ Define pins and Output Data Registers
 #if 0
 #define TFT_DATA       GPIOB
 #define TFT_PORT       PORT_LOW
-#define TFT_D0         LL_GPIO_PIN_0
-#define TFT_D1         LL_GPIO_PIN_1
-#define TFT_D2         LL_GPIO_PIN_2
-#define TFT_D3         LL_GPIO_PIN_3
-#define TFT_D4         LL_GPIO_PIN_4
-#define TFT_D5         LL_GPIO_PIN_5
-#define TFT_D6         LL_GPIO_PIN_6
-#define TFT_D7         LL_GPIO_PIN_7
 //Port data |D7 |D6 |D5 |D4 |D3 |D2 |D1 |D0 |
 //Pin stm32 |PB7|PB6|PB5|PB4|PB3|PB2|PB1|PB0|
 #endif
@@ -115,14 +91,6 @@ Define pins and Output Data Registers
 #if 0
 #define TFT_DATA       GPIOB
 #define TFT_PORT       PORT_HIGH
-#define TFT_D0         LL_GPIO_PIN_8
-#define TFT_D1         LL_GPIO_PIN_9
-#define TFT_D2         LL_GPIO_PIN_10
-#define TFT_D3         LL_GPIO_PIN_11
-#define TFT_D4         LL_GPIO_PIN_12
-#define TFT_D5         LL_GPIO_PIN_13
-#define TFT_D6         LL_GPIO_PIN_14
-#define TFT_D7         LL_GPIO_PIN_15
 //Port data |D7  |D6  |D5  |D4  |D3  |D2  |D1 |D0 |
 //Pin stm32 |PB15|PB14|PB13|PB12|PB11|PB10|PB9|PB8|
 #endif
@@ -130,14 +98,6 @@ Define pins and Output Data Registers
 #if 0
 #define TFT_DATA       GPIOC
 #define TFT_PORT       PORT_LOW
-#define TFT_D0         LL_GPIO_PIN_0
-#define TFT_D1         LL_GPIO_PIN_1
-#define TFT_D2         LL_GPIO_PIN_2
-#define TFT_D3         LL_GPIO_PIN_3
-#define TFT_D4         LL_GPIO_PIN_4
-#define TFT_D5         LL_GPIO_PIN_5
-#define TFT_D6         LL_GPIO_PIN_6
-#define TFT_D7         LL_GPIO_PIN_7
 //Port data |D7 |D6 |D5 |D4 |D3 |D2 |D1 |D0 |
 //Pin stm32 |PC7|PC6|PC5|PC4|PC3|PC2|PC1|PC0|
 #endif
@@ -145,14 +105,6 @@ Define pins and Output Data Registers
 #if 0
 #define TFT_DATA       GPIOC
 #define TFT_PORT       PORT_HIGH
-#define TFT_D0         LL_GPIO_PIN_8
-#define TFT_D1         LL_GPIO_PIN_9
-#define TFT_D2         LL_GPIO_PIN_10
-#define TFT_D3         LL_GPIO_PIN_11
-#define TFT_D4         LL_GPIO_PIN_12
-#define TFT_D5         LL_GPIO_PIN_13
-#define TFT_D6         LL_GPIO_PIN_14
-#define TFT_D7         LL_GPIO_PIN_15
 //Port data |D7  |D6  |D5  |D4  |D3  |D2  |D1 |D0 |
 //Pin stm32 |PC15|PC14|PC13|PC12|PC11|PC10|PC9|PC8|
 #endif
@@ -160,6 +112,18 @@ Define pins and Output Data Registers
 #if 0
 #define TFT_DATA       GPIOD
 #define TFT_PORT       PORT_LOW
+//Port data |D7 |D6 |D5 |D4 |D3 |D2 |D1 |D0 |
+//Pin stm32 |PD7|PD6|PD5|PD4|PD3|PD2|PD1|PD0|
+#endif
+
+#if 0
+#define TFT_DATA       GPIOD
+#define TFT_PORT       PORT_HIGH
+//Port data |D7  |D6  |D5  |D4  |D3  |D2  |D1 |D0 |
+//Pin stm32 |PD15|PD14|PD13|PD12|PD11|PD10|PD9|PD8|
+#endif
+
+#if TFT_PORT == PORT_LOW
 #define TFT_D0         LL_GPIO_PIN_0
 #define TFT_D1         LL_GPIO_PIN_1
 #define TFT_D2         LL_GPIO_PIN_2
@@ -168,13 +132,9 @@ Define pins and Output Data Registers
 #define TFT_D5         LL_GPIO_PIN_5
 #define TFT_D6         LL_GPIO_PIN_6
 #define TFT_D7         LL_GPIO_PIN_7
-//Port data |D7 |D6 |D5 |D4 |D3 |D2 |D1 |D0 |
-//Pin stm32 |PD7|PD6|PD5|PD4|PD3|PD2|PD1|PD0|
 #endif
 
-#if 0
-#define TFT_DATA       GPIOD
-#define TFT_PORT       PORT_HIGH
+#if TFT_PORT == PORT_HIGH
 #define TFT_D0         LL_GPIO_PIN_8
 #define TFT_D1         LL_GPIO_PIN_9
 #define TFT_D2         LL_GPIO_PIN_10
@@ -183,8 +143,6 @@ Define pins and Output Data Registers
 #define TFT_D5         LL_GPIO_PIN_13
 #define TFT_D6         LL_GPIO_PIN_14
 #define TFT_D7         LL_GPIO_PIN_15
-//Port data |D7  |D6  |D5  |D4  |D3  |D2  |D1 |D0 |
-//Pin stm32 |PD15|PD14|PD13|PD12|PD11|PD10|PD9|PD8|
 #endif
 
 
