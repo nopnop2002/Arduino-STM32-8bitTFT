@@ -121,6 +121,12 @@ You can use any of the following:
 - PORT-D HIGH   
  TFT Pin|D7  |D6  |D5  |D4  |D3  |D2  |D1 |D0 |   
  STM32 Pin|PD15|PD14|PD13|PD12|PD11|PD10|PD9|PD8|   
+- PORT-E LOW   
+ TFT Pin|D7 |D6 |D5 |D4 |D3 |D2 |D1 |D0 |   
+ STM32 Pin|PE7|PE6|PE5|PE4|PE3|PE2|PE1|PE0|   
+- PORT-E HIGH   
+ TFT Pin|D7  |D6  |D5  |D4  |D3  |D2  |D1 |D0 |   
+ STM32 Pin|PE15|PE14|PE13|PE12|PE11|PE10|PE9|PE8|   
 
 ### How to change default Serial instance pins   
 The STM32 can use multiple GPIOs as serial ports.    
