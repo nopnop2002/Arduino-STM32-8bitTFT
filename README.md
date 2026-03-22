@@ -45,6 +45,8 @@ Therefore, depending on the board, PB3 and PB4 may not be available as GPIO.
 These GPIO are controlled using LL_GPIO_WriteOutputPort().   
 
 ```
+#define TFT_CNTRL      GPIOB
+
 #define TFT_RD         LL_GPIO_PIN_0 // PB0
 #define TFT_WR         LL_GPIO_PIN_1 // PB1
 #define TFT_RS         LL_GPIO_PIN_5 // PB5
@@ -55,8 +57,8 @@ These GPIO are controlled using LL_GPIO_WriteOutputPort().
 These GPIOs can be changed to PC ports.   
 
 ```
-//#define TFT_CNTRL GPIOB
-#define TFT_CNTRL GPIOC
+//#define TFT_CNTRL      GPIOB
+#define TFT_CNTRL      GPIOC
 
 #define TFT_RD         LL_GPIO_PIN_0 // PC0
 #define TFT_WR         LL_GPIO_PIN_1 // PC1
@@ -68,8 +70,8 @@ These GPIOs can be changed to PC ports.
 These GPIOs can be changed to PD ports.   
 
 ```
-//#define TFT_CNTRL GPIOB
-#define TFT_CNTRL GPIOD
+//#define TFT_CNTRL      GPIOB
+#define TFT_CNTRL      GPIOD
 
 #define TFT_RD         LL_GPIO_PIN_0 // PD0
 #define TFT_WR         LL_GPIO_PIN_1 // PD1
