@@ -108,6 +108,8 @@ void STM32_TFT_8bit::enablePortClock(GPIO_TypeDef *gpio) {
     __HAL_RCC_GPIOC_CLK_ENABLE();
   } else if (gpio == GPIOD) {
     __HAL_RCC_GPIOD_CLK_ENABLE();
+  } else if (gpio == GPIOE) {
+    __HAL_RCC_GPIOE_CLK_ENABLE();
   }
 }
 
