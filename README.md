@@ -79,10 +79,15 @@ These GPIOs can be changed to PD ports.
 ```
 
 (\*2)   
-__Serial.print of NUCLEO and DISC1 gose to PA2.__   
-__Serial.print of STM32G series gose to PA2.__   
-__Serial.print of STM32H series gose to PA0.__   
-__If you are using these, you will need to do one of the following:__   
+The output destination of Serial.print differs depending on the Board Part Number.   
+- F103 BluePill:PA9   
+- F103 BlackPill:PA9   
+- Generic F103:PA2   
+- NUCLEO and DISC1:PA2   
+- Generic STM32G series:PA2   
+- Generic STM32H series:PA0   
+
+You will need to do one of the following:   
 - Change D0 to D7 to another GPIO   
 - Change default Serial instance pins   
 
@@ -138,8 +143,8 @@ WEAK const PinMap PinMap_UART_RX[] = {
 ```
 The example below uses PB10/PB11 as a Serial Object.   
 ```
-  Serial.setTx(PB10);
-  Serial.setRx(PB11);
+  Serial.setTx(PB10); // TX
+  Serial.setRx(PB11); // RX
   Serial.begin(115200);
 ```
 
