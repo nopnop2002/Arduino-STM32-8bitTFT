@@ -123,6 +123,21 @@ Define pins and Output Data Registers
 //Pin stm32 |PD15|PD14|PD13|PD12|PD11|PD10|PD9|PD8|
 #endif
 
+#if 0
+#define TFT_DATA       GPIOE
+#define TFT_PORT       PORT_LOW
+//Port data |D7 |D6 |D5 |D4 |D3 |D2 |D1 |D0 |
+//Pin stm32 |PE7|PE6|PE5|PE4|PE3|PE2|PE1|PE0|
+#endif
+
+#if 0
+#define TFT_DATA       GPIOE
+#define TFT_PORT       PORT_HIGH
+//Port data |D7  |D6  |D5  |D4  |D3  |D2  |D1 |D0 |
+//Pin stm32 |PE15|PE14|PE13|PE12|PE11|PE10|PE9|PE8|
+#endif
+
+
 #if TFT_PORT == PORT_LOW
 #define TFT_D0         LL_GPIO_PIN_0
 #define TFT_D1         LL_GPIO_PIN_1
