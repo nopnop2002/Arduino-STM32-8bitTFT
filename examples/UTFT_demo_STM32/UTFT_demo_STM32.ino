@@ -10,6 +10,9 @@
 #include <Adafruit_GFX.h>
 #include "Arduino-STM32-8bitTFT.h"
 
+// If you want to change the default serial instance pin, set it to 1.
+#define REMAP 1
+
 STM32_TFT_8bit myGLCD;
 
 
@@ -26,6 +29,10 @@ int cbuf[318];
 void setup()
 {
   delay(1000);
+#if REMAP
+  Serial.setTx(PB10); // TX
+  Serial.setRx(PB11); // RX
+#endif
   Serial.begin(115200);
   uint32_t ID = myGLCD.readID();
   Serial.print("Device ID: 0x"); Serial.println(ID, HEX);

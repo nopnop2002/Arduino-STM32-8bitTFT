@@ -14,6 +14,9 @@
 #include <Adafruit_GFX.h>
 #include "Arduino-STM32-8bitTFT.h"
 
+// If you want to change the default serial instance pin, set it to 1.
+#define REMAP 1
+
 STM32_TFT_8bit tft;
 
 int16_t h = 240;
@@ -59,10 +62,12 @@ int16_t lscore = 12;
 int16_t rscore = 4;
 
 void setup(void) {
-  
   //randomSeed(analogRead(0)*analogRead(1));
-   
   delay(1000);
+#if REMAP
+  Serial.setTx(PB10); // TX
+  Serial.setRx(PB11); // RX
+#endif
   Serial.begin(115200);
   uint32_t ID = tft.readID();
   Serial.print("Device ID: 0x"); Serial.println(ID, HEX);
