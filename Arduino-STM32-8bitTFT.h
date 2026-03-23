@@ -57,7 +57,7 @@ To use a different resolution TFT, change this or use setResolution().
 
 
 //#define GPIO_INTERFACE 0 // The data port uses the LL_GPIO_WriteOutputPort function
-#define GPIO_INTERFACE 1 // The data port Port output data (ODR) Register
+#define GPIO_INTERFACE 1 // The data port uses Port output data (ODR) Register
 
 #define CNTL_INTERFACE 0 // The control port uses the LL_GPIO_WriteOutputPort function
 //#define CNTL_INTERFACE 1 // The control port uses Port bit set/reset (BSRR) Register
