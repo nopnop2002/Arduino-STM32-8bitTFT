@@ -317,7 +317,7 @@ Furthermore, the wire cables must be as short as possible.
 # Benchmark using ILI9341(240x320)   
 The unit is microseconds.   
 
-Valiant is Generic F103. CPU Frequency is 64MHz.   
+### Valiant is Generic F103. CPU Frequency is 64MHz.   
 |Options|CNTL_INTERFACE 0|CNTL_INTERFACE 1|
 |:-:|:-:|:-:|
 |Screen fill            |793547 |468909 |
@@ -333,7 +333,7 @@ Valiant is Generic F103. CPU Frequency is 64MHz.
 |Rounded rects (outline)|111681 |70286  |
 |Rounded rects (filled) |1653430|979834 |
 
-Valiant is F103 PillBoard. CPU Frequency is 72MHz.   
+### Valiant is F103 PillBoard. CPU Frequency is 72MHz.   
 |Options|CNTL_INTERFACE 0|CNTL_INTERFACE 1|
 |:-:|:-:|:-:|
 |Screen fill            |705234 |416759 |
