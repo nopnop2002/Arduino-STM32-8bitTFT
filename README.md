@@ -6,6 +6,46 @@ https://github.com/prenticedavid/MCUFRIEND_kbv
 
 ----
 
+# Tested TFT    
+- ILI9325 2.4inch 240x320 TFT-Shield  
+- ILI9341 2.4inch 240x320 TFT-Shield   
+- ILI9342 2.4inch 240x320 TFT-Shield   
+- SPFD5408 2.4inch 240x320 TFT-Shield   
+- R61505 2.4inch 240x320 TFT-Shield   
+- ST7783 2.4inch 240x320 TFT-Shield   
+- LGDP4532 2.4inch 240x320 TFT-Shield   
+- R61509V 3.6inch 240x400 TFT-Shield   
+- ST7793 3.6inch 240x400 TFT-Shield   
+- ILI9481 3.5inch 320x480 TFT-Shield   
+- ILI9486 3.5inch 320x480 TFT-Shield   
+- RM68140 3.95inch 320x480 TFT-Shield   
+- ST7796 3.95inch 320x480 TFT-Shield   
+
+I found that these display cannot follow high-speed GPIO-ON and GPIO-OFF.   
+- OPEN-SMART ILI9225 TFT-Shield   
+- OPEN-SMART ILI9327 TFT-Shield   
+- OPEN-SMART ILI9340 TFT-Shield   
+- OPEN-SMART S6D1121 16Pin-Parallel   
+- OPEN-SMART ST7775 16Pin-Parallel   
+- OPEN-SMART ST7783 16Pin-Parallel   
+- OPEN-SMART R61509V 16Pin-Parallel   
+- OPEN-SMART ILI9488 16Pin-Parallel   
+
+![TFT-SHIELD-2](https://user-images.githubusercontent.com/6020549/77811736-c0082a80-70df-11ea-861e-d2117e2718a0.JPG)
+
+----
+
+# Boards available    
+This library uses LL GPIO Generic Driver and CMSIS ODR Register.   
+Probably all boards have these available.   
+I tested with these.   
+- STM32F0/F1/F3/F4 series   
+- STM32G4 series   
+- STM32H5 series   
+- STM32L4 series   
+
+----
+
 # Software requirement    
 - Arduino IDE   
 	I used V1.8.19   
@@ -181,46 +221,6 @@ When a regulator is NOT mounted on the back, it's operated 3.3V.
 
 __Note:Keep the wire length as short as possible.__   
 
-----
-
-# Tested TFT    
-- ILI9325 2.4inch 240x320 TFT-Shield  
-- ILI9341 2.4inch 240x320 TFT-Shield   
-- ILI9342 2.4inch 240x320 TFT-Shield   
-- SPFD5408 2.4inch 240x320 TFT-Shield   
-- R61505 2.4inch 240x320 TFT-Shield   
-- ST7783 2.4inch 240x320 TFT-Shield   
-- LGDP4532 2.4inch 240x320 TFT-Shield   
-- R61509V 3.6inch 240x400 TFT-Shield   
-- ST7793 3.6inch 240x400 TFT-Shield   
-- ILI9481 3.5inch 320x480 TFT-Shield   
-- ILI9486 3.5inch 320x480 TFT-Shield   
-- RM68140 3.95inch 320x480 TFT-Shield   
-- ST7796 3.95inch 320x480 TFT-Shield   
-
-I found that these display cannot follow high-speed GPIO-ON and GPIO-OFF.   
-- OPEN-SMART ILI9225 TFT-Shield   
-- OPEN-SMART ILI9327 TFT-Shield   
-- OPEN-SMART ILI9340 TFT-Shield   
-- OPEN-SMART S6D1121 16Pin-Parallel   
-- OPEN-SMART ST7775 16Pin-Parallel   
-- OPEN-SMART ST7783 16Pin-Parallel   
-- OPEN-SMART R61509V 16Pin-Parallel   
-- OPEN-SMART ILI9488 16Pin-Parallel   
-
-![TFT-SHIELD-2](https://user-images.githubusercontent.com/6020549/77811736-c0082a80-70df-11ea-861e-d2117e2718a0.JPG)
-
-
-----
-
-# Boards available    
-This library uses LL GPIO Generic Driver and CMSIS ODR Register.   
-Probably all boards have these available.   
-I tested with these.   
-- STM32F0/F1/F3/F4 series   
-- STM32G4 series   
-- STM32H5 series   
-- STM32L4 series   
 
 ----
 
