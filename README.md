@@ -339,6 +339,21 @@ The unit is microseconds.
 	|Rounded rects (outline)|99252  |62469  |
 	|Rounded rects (filled) |1469446|870876 |
 
+- Valiant is BlackPill F401CC. CPU Frequency is 84MHz.   
+	|Options|CNTL_INTERFACE 0|CNTL_INTERFACE 1|
+	|:-:|:-:|:-:|
+	|Screen fill            |247241 |192333 |
+	|Text                   |26177  |20430  |
+	|Lines                  |240153 |177725 |
+	|Horiz/Vert Lines       |20854  |16212  |
+	|Rectangles (outline)   |13871  |10792  |
+	|Rectangles (filled)    |513445 |399455 |
+	|Circles (filled)       |84325  |65780  |
+	|Circles (outline)      |105621 |78305  |
+	|Triangles (outline)    |52836  |39184  |
+	|Triangles (filled)     |186336 |145204 |
+	|Rounded rects (outline)|41465  |31279  |
+	|Rounded rects (filled) |518461 |403446 |
 
 # Benchmark using ILI9341(240x320)   
 The unit is microseconds.   
