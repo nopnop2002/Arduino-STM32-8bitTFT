@@ -317,21 +317,21 @@ Furthermore, the wire cables must be as short as possible.
 # Benchmark using ILI9341(240x320)   
 The unit is microseconds.   
 
-### Valiant is Generic F103. CPU Frequency is 64MHz.   
-|Options|CNTL_INTERFACE 0|CNTL_INTERFACE 1|
-|:-:|:-:|:-:|
-|Screen fill            |793547 |468909 |
-|Text                   |65602  |43645  |
-|Lines                  |617476 |392079 |
-|Horiz/Vert Lines       |66107  |39275  |
-|Rectangles (outline)   |43226  |25888  |
-|Rectangles (filled)    |1647687|973586 |
-|Circles (filled)       |236781 |148907 |
-|Circles (outline)      |272475 |173902 |
-|Triangles (outline)    |136929 |86731  |
-|Triangles (filled)     |572235 |344905 |
-|Rounded rects (outline)|111681 |70286  |
-|Rounded rects (filled) |1653430|979834 |
+- Valiant is Generic F103. CPU Frequency is 64MHz.   
+	|Options|CNTL_INTERFACE 0|CNTL_INTERFACE 1|
+	|:-:|:-:|:-:|
+	|Screen fill            |793547 |468909 |
+	|Text                   |65602  |43645  |
+	|Lines                  |617476 |392079 |
+	|Horiz/Vert Lines       |66107  |39275  |
+	|Rectangles (outline)   |43226  |25888  |
+	|Rectangles (filled)    |1647687|973586 |
+	|Circles (filled)       |236781 |148907 |
+	|Circles (outline)      |272475 |173902 |
+	|Triangles (outline)    |136929 |86731  |
+	|Triangles (filled)     |572235 |344905 |
+	|Rounded rects (outline)|111681 |70286  |
+	|Rounded rects (filled) |1653430|979834 |
 
 ### Valiant is F103 PillBoard. CPU Frequency is 72MHz.   
 |Options|CNTL_INTERFACE 0|CNTL_INTERFACE 1|
