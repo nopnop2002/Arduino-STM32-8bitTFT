@@ -23,7 +23,6 @@
 #define _Arduino-STM32-8bitTFTH_
 
 #include "Arduino.h"
-#include "Print.h"
 #include <Adafruit_GFX.h>
 
 
