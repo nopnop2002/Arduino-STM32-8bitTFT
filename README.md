@@ -160,6 +160,8 @@ This register can change multiple IOs at once, but only IOs on the same port.
 Therefore, D0 to D7 must be the same port.   
 If PORT-A is used for D0-D7, __all GPIOs on PORT-A cannot be used for other purposes.__   
 Because CMSIS ODR Register manipulates all GPIOs of PORT-A.   
+```GPIOA->ODR = 0x00FF```   
+This code not only sets D0 to D7 of PORT-A to 1, but also sets D8 to D15 of PORT-A to 0.
 
 You can use any of the following:   
 - PORT-A LOW   
