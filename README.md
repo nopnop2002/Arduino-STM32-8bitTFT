@@ -333,15 +333,15 @@ Valiant is Generic F103. CPU Frequency is 64MHz.
 Valiant is F103 PillBoard. CPU Frequency is 72MHz.   
 |Options|CNTL_INTERFACE 0|CNTL_INTERFACE 1|
 |:-:|:-:|:-:|
-|Screen fill            |705234 |416761 |
-|Text                   |58300  |38790  |
-|Lines                  |548765 |348482 |
-|Horiz/Vert Lines       |58750  |34908  |
+|Screen fill            |705234 |416759 |
+|Text                   |58300  |38791  |
+|Lines                  |548765 |348480 |
+|Horiz/Vert Lines       |58750  |34907  |
 |Rectangles (outline)   |38415  |23009  |
 |Rectangles (filled)    |1464352|865322 |
 |Circles (filled)       |210432 |132348 |
-|Circles (outline)      |242155 |154561 |
-|Triangles (outline)    |121691 |77087  |
+|Circles (outline)      |242155 |154560 |
+|Triangles (outline)    |121691 |77088  |
 |Triangles (filled)     |508563 |306550 |
 |Rounded rects (outline)|99252  |62469  |
 |Rounded rects (filled) |1469446|870876 |
