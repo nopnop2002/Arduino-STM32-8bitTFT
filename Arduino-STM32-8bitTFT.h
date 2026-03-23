@@ -56,8 +56,11 @@ To use a different resolution TFT, change this or use setResolution().
 #define GRAY        0x5AEB
 
 
-//#define GPIO_INTERFACE 0 // Use LL_GPIO_WriteOutputPort fuction
-#define GPIO_INTERFACE 1 // Use Port output data (ODR) Register
+//#define GPIO_INTERFACE 0 // The data port uses the LL_GPIO_WriteOutputPort function
+#define GPIO_INTERFACE 1 // The data port Port output data (ODR) Register
+
+#define CNTL_INTERFACE 0 // The control port uses the LL_GPIO_WriteOutputPort function
+//#define CNTL_INTERFACE 1 // The control port uses Port bit set/reset (BSRR) Register
 
 /*
 Define pins and Output Data Registers
@@ -123,21 +126,6 @@ Define pins and Output Data Registers
 //Pin stm32 |PD15|PD14|PD13|PD12|PD11|PD10|PD9|PD8|
 #endif
 
-#if 0
-#define TFT_DATA       GPIOE
-#define TFT_PORT       PORT_LOW
-//Port data |D7 |D6 |D5 |D4 |D3 |D2 |D1 |D0 |
-//Pin stm32 |PE7|PE6|PE5|PE4|PE3|PE2|PE1|PE0|
-#endif
-
-#if 0
-#define TFT_DATA       GPIOE
-#define TFT_PORT       PORT_HIGH
-//Port data |D7  |D6  |D5  |D4  |D3  |D2  |D1 |D0 |
-//Pin stm32 |PE15|PE14|PE13|PE12|PE11|PE10|PE9|PE8|
-#endif
-
-
 #if TFT_PORT == PORT_LOW
 #define TFT_D0         LL_GPIO_PIN_0
 #define TFT_D1         LL_GPIO_PIN_1
@@ -147,9 +135,7 @@ Define pins and Output Data Registers
 #define TFT_D5         LL_GPIO_PIN_5
 #define TFT_D6         LL_GPIO_PIN_6
 #define TFT_D7         LL_GPIO_PIN_7
-#endif
-
-#if TFT_PORT == PORT_HIGH
+#else
 #define TFT_D0         LL_GPIO_PIN_8
 #define TFT_D1         LL_GPIO_PIN_9
 #define TFT_D2         LL_GPIO_PIN_10
@@ -161,14 +147,11 @@ Define pins and Output Data Registers
 #endif
 
 
-#define TFT_CNTRL GPIOB
-#define LL_LOW(LL_GPIO_PIN)  LL_GPIO_WriteOutputPort(TFT_CNTRL, (LL_GPIO_ReadOutputPort(TFT_CNTRL) & ~(LL_GPIO_PIN)))
-#define LL_HIGH(LL_GPIO_PIN) LL_GPIO_WriteOutputPort(TFT_CNTRL, (LL_GPIO_ReadOutputPort(TFT_CNTRL) | LL_GPIO_PIN))
-
-
 // Note:
 // PA15 PB3 PB4 is assigned to JTAG debug port by default on some boards.
 // Therefore, it may not be available by default.
+#define TFT_CNTRL      GPIOB
+
 #define TFT_RD         LL_GPIO_PIN_0 // PB0
 #define TFT_WR         LL_GPIO_PIN_1 // PB1
 #define TFT_RS         LL_GPIO_PIN_5 // PB5
@@ -178,6 +161,12 @@ Define pins and Output Data Registers
 //#define DELAY          delayMicroseconds(10);
 #define DELAY          (void)0  // NOP
 
+
+#define LL_LOW(LL_GPIO_PIN)  LL_GPIO_WriteOutputPort(TFT_CNTRL, (LL_GPIO_ReadOutputPort(TFT_CNTRL) & ~(LL_GPIO_PIN)))
+#define LL_HIGH(LL_GPIO_PIN) LL_GPIO_WriteOutputPort(TFT_CNTRL, (LL_GPIO_ReadOutputPort(TFT_CNTRL) | LL_GPIO_PIN))
+
+// GPIO is controlled using LL_GPIO_WriteOutputPort().
+#if CNTL_INTERFACE == 0
 #define RD_ACTIVE      LL_LOW(TFT_RD)
 #define RD_IDLE        LL_HIGH(TFT_RD)
 #define WR_ACTIVE      LL_LOW(TFT_WR)
@@ -189,8 +178,29 @@ Define pins and Output Data Registers
 #define RST_ACTIVE     LL_LOW(TFT_RST)
 #define RST_IDLE       LL_HIGH(TFT_RST)
 
-#define RD_STROBE      {RD_ACTIVE; RD_IDLE;} // Not use
-#define WR_STROBE      {WR_ACTIVE; WR_IDLE;} // Not use
+#else
+// GPIO is controlled using BSRR Register.
+// BSRR is Port bit set/reset register
+// Bits 31:16 BRy: Port x Reset bit y (y= 0 .. 15)
+//   0: No action on the corresponding ODRx bit
+//   1: Reset the corresponding ODRx bit
+// Bits 15:0 BSy: Port x Set bit y (y= 0 .. 15)
+//   0: No action on the corresponding ODRx bit
+//   1: Set the corresponding ODRx bit
+#define RD_ACTIVE      TFT_CNTRL->BSRR = TFT_RD << 16
+#define RD_IDLE        TFT_CNTRL->BSRR = TFT_RD
+#define WR_ACTIVE      TFT_CNTRL->BSRR = TFT_WR << 16
+#define WR_IDLE        TFT_CNTRL->BSRR = TFT_WR
+#define CD_COMMAND     TFT_CNTRL->BSRR = TFT_RS << 16
+#define CD_DATA        TFT_CNTRL->BSRR = TFT_RS
+#define CS_ACTIVE      TFT_CNTRL->BSRR = TFT_CS << 16
+#define CS_IDLE        TFT_CNTRL->BSRR = TFT_CS
+#define RST_ACTIVE     TFT_CNTRL->BSRR = TFT_RST << 16
+#define RST_IDLE       TFT_CNTRL->BSRR = TFT_RST
+#endif
+
+//#define RD_STROBE      {RD_ACTIVE; RD_IDLE;} // Not use
+//#define WR_STROBE      {WR_ACTIVE; WR_IDLE;} // Not use
 
 
 

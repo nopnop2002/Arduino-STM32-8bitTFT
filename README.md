@@ -281,7 +281,58 @@ Serial.print("Height: "); Serial.println(height); // You will see 400
 
 ----
 
-# Benchmark using ILI9341(240x320) microseconds   
+# Using Port bit set/reset register
+The control port (RD/WR/RS/CS/RST) is switched ON/OFF using the LL_GPIO_WriteOutputPort function.   
+Instead of using the LL_GPIO_WriteOutputPort function, you can use the Port bit set/reset register.   
+```
+//#define CNTL_INTERFACE 0 // The control port uses the LL_GPIO_WriteOutputPort function
+#define CNTL_INTERFACE 1 // The control port uses Port bit set/reset (BSRR) Register
+```
+
+This option enables faster GPIO ON/OFF switching.   
+It may not work on high-speed Valiant boards such as the F407 and F446.   
+
+# Benchmark using ILI9341(240x320)   
+The unit is microseconds.   
+Valiant is Generic F103.   
+CPU Frequency is 64MHz.   
+|Options|CNTL_INTERFACE 0|CNTL_INTERFACE 1|
+|:-:|:-:|:-:|
+|Screen fill            |793547 |468909 |
+|Text                   |65602  |43645  |
+|Lines                  |617476 |392079 |
+|Horiz/Vert Lines       |66107  |39275  |
+|Rectangles (outline)   |43226  |25888  |
+|Rectangles (filled)    |1647687|973586 |
+|Circles (filled)       |236781 |148907 |
+|Circles (outline)      |272475 |173902 |
+|Triangles (outline)    |136929 |86731  |
+|Triangles (filled)     |572235 |344905 |
+|Rounded rects (outline)|111681 |70286  |
+|Rounded rects (filled) |1653430|979834 |
+
+Valiant is F103 PillBoard.   
+CPU Frequency is 72MHz.   
+|Options|CNTL_INTERFACE 0|CNTL_INTERFACE 1|
+|:-:|:-:|:-:|
+|Screen fill            |705240 |416761 |
+|Text                   |58301  |38790  |
+|Lines                  |548765 |348482 |
+|Horiz/Vert Lines       |58750  |34908  |
+|Rectangles (outline)   |38415  |23009  |
+|Rectangles (filled)    |1464352|865322 |
+|Circles (filled)       |210432 |132348 |
+|Circles (outline)      |242155 |154561 |
+|Triangles (outline)    |121691 |77087  |
+|Triangles (filled)     |508563 |306550 |
+|Rounded rects (outline)|99252  |62469  |
+|Rounded rects (filled) |1469446|870876 |
+
+
+# Benchmark using ILI9341(240x320)   
+The unit is microseconds.   
+The control port is switched ON/OFF using the LL_GPIO_WriteOutputPort function.   
+
 |Valiant|F072|F103(Generic)|F103(PillBoard)|F303|F401|F411|F407|F446|G431|H750|L452|ATmega328|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 |CPU Freq|48MHz|64MHz|72MHz|72MHz|84MHz|100MHz|168MHz|180MHz|170MHz|480MHz|80MHz|20MHz|
@@ -298,6 +349,5 @@ Serial.print("Height: "); Serial.println(height); // You will see 400
 |Triangles (filled)     |542331 |572235 |508563 |268777 |185711 |162496 |106788 |99944  |112922 |155465 |202875 |1721636|
 |Rounded rects (outline)|117285 |111681 |99252  |58746  |40758  |35682  |23791  |22529  |23750  |27519  |43702  |506428 |
 |Rounded rects (filled) |1495318|1653430|1469446|750346 |518107 |453320 |297450 |277742 |298242 |132427 |548296 |3795228|
-
 
 

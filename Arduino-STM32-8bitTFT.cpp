@@ -108,8 +108,6 @@ void STM32_TFT_8bit::enablePortClock(GPIO_TypeDef *gpio) {
     __HAL_RCC_GPIOC_CLK_ENABLE();
   } else if (gpio == GPIOD) {
     __HAL_RCC_GPIOD_CLK_ENABLE();
-  } else if (gpio == GPIOE) {
-    __HAL_RCC_GPIOE_CLK_ENABLE();
   }
 }
 
@@ -126,26 +124,29 @@ void STM32_TFT_8bit::setReadDataBus(void) {
   }
 }
 
-
-void STM32_TFT_8bit::write8(uint8_t bytes) {
+// Using Low Level GPIO Generic Driver
 #if GPIO_INTERFACE == 0
+void STM32_TFT_8bit::write8(uint8_t bytes) {
   uint32_t PinMask = 0;
   for(uint8_t bits=0;bits<8;bits++) {
     uint8_t mask = 1<<bits;
     if ( (bytes & mask) != 0 ) PinMask= PinMask + _pins[bits];
   }
   LL_GPIO_WriteOutputPort(TFT_DATA, PinMask);
+}
 #endif
 
+// Using CMSIS ODR Regiser
 #if GPIO_INTERFACE == 1
+void STM32_TFT_8bit::write8(uint8_t bytes) {
 #if TFT_PORT == PORT_LOW // Use Px0 to Px7
   TFT_DATA->ODR = bytes;
 #else  // Use Px8 to Px15
   uint32_t _bytes = bytes << 8;
   TFT_DATA->ODR = _bytes;
 #endif
-#endif
 }
+#endif
 
 void STM32_TFT_8bit::writeCmdByte(uint8_t c) {
   CS_ACTIVE;
