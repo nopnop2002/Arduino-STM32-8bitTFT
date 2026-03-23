@@ -349,7 +349,7 @@ Valiant is F103 PillBoard. CPU Frequency is 72MHz.
 
 # Benchmark using ILI9341(240x320)   
 The unit is microseconds.   
-The control port is switched ON/OFF using the LL_GPIO_WriteOutputPort function.   
+I used the LL_GPIO_WriteOutputPort function to turn the control port on and off.   
 
 |Valiant|F072|F103(Generic)|F103(PillBoard)|F303|F401|F411|F407|F446|G431|H750|L452|ATmega328|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
