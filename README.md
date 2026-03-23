@@ -283,9 +283,9 @@ Serial.print("Height: "); Serial.println(height); // You will see 400
 
 # Benchmark using ILI9341(240x320)   
 |Valiant|F072|F103|F303|F401|F411|F407|F446|G431|H750|L452|ATmega328|
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 |CPU Freq|48MHz|64MHz|72MHz|84MHz|100MHz|168MHz|180MHz|170MHz|480MHz|80MHz|20MHz|
 |Core|Cortex-M0|Cortext-M3|Cortext-M4|Cortext-M4|Cortext-M4|Cortext-M4|Cortext-M4|Cortext-M4|Cortext-M7|Cortext-M4|AVR RISC|
-|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 |Screen fill            |713964 |737158 |358057 |247223 |216304 |141878 |132427 |140239 |222478 |259637 |1379560|
 |Text                   |73319  |58985  |37647  |25814  |22605  |15097  |14272  |16275  |14691  |28825  |344024 |
 |Lines                  |675985 |556282 |336332 |235522 |206064 |137693 |130958 |134605 |147000 |250545 |3390180|
