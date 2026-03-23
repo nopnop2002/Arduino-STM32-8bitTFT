@@ -318,8 +318,9 @@ Furthermore, the wire cables must be as short as possible.
 The unit is microseconds.   
 Valiant is Generic F103. CPU Frequency is 64MHz.   
 |Options|CNTL_INTERFACE 0|CNTL_INTERFACE 1|
-|Options|CNTL_INTERFACE 0|CNTL_INTERFACE 1|
 |:-:|:-:|:-:|
+|Valiant|Generic F103|Generic F103|
+|Freqency|64MHz|64MHz|
 |Screen fill            |793547 |468909 |
 |Text                   |65602  |43645  |
 |Lines                  |617476 |392079 |
