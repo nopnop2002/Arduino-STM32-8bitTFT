@@ -7,12 +7,31 @@ https://github.com/prenticedavid/MCUFRIEND_kbv
 ----
 
 # Software requirement    
+- Arduino IDE   
+	I used V1.8.19   
+	![Arduino_V1_8_19](https://github.com/user-attachments/assets/f3179568-cce6-4762-99e3-509852c7fa5d)
 
-- Core library    
-https://github.com/stm32duino/Arduino_Core_STM32
+- Arduino core support for STM32 based boards   
+	https://github.com/stm32duino/Arduino_Core_STM32   
+	___Note for Core version___   
+	Core version 2.8 or later requires Arduino IDE 2.x.   
+	I used version 2.7.1.   
+	This is the final version available for Arduino IDE 1.x.   
+	![](https://img.shields.io/badge/_IMPORTANT-important)  
+	__There is some core library for STM32.__   
+	__It doesn't work with [Arduino STM32](https://github.com/rogerclarkmelbourne/Arduino_STM32).__
+	![STM32_Core_2 7 1](https://github.com/user-attachments/assets/e135c6b2-61f5-4ac8-a4e5-8878a29a2be4)
+
+- STM32 Cube Programmer   
+	The Arduino IDE uses the STM32CubeProgrammer to write firmware to the STM32.   
+	Please note that older versions of STM32CubeProgrammer do not support newer models such as STM32G0.   
+	I used version 2.20.   
+	![Image](https://github.com/user-attachments/assets/d6b365b8-6955-4e2a-9937-7d5607e65da4)
 
 - Adafruit GFX Library   
-https://github.com/adafruit/Adafruit-GFX-Library   
+	https://github.com/adafruit/Adafruit-GFX-Library   
+	I used version 1.11.9.   
+	![Image](https://github.com/user-attachments/assets/f4a09fdf-7c9f-412a-a9fd-e3704f4dd82b)
 
 ----
 
@@ -281,21 +300,21 @@ Serial.print("Height: "); Serial.println(height); // You will see 400
 
 ----
 
-# Using Port bit set/reset register
-The control port (RD/WR/RS/CS/RST) is switched ON/OFF using the LL_GPIO_WriteOutputPort function.   
+# Using Port bit set/reset register   
+The control ports (RD/WR/RS/CS/RST) are switched on/off using the LL_GPIO_WriteOutputPort function.   
 Instead of using the LL_GPIO_WriteOutputPort function, you can use the Port bit set/reset register.   
 ```
 //#define CNTL_INTERFACE 0 // The control port uses the LL_GPIO_WriteOutputPort function
 #define CNTL_INTERFACE 1 // The control port uses Port bit set/reset (BSRR) Register
 ```
 
-This option enables faster GPIO ON/OFF switching.   
+This option speeds up the display.   
 It may not work on high-speed Valiant boards such as the F407 and F446.   
+Furthermore, the wire cables must be as short as possible.   
 
 # Benchmark using ILI9341(240x320)   
 The unit is microseconds.   
-Valiant is Generic F103.   
-CPU Frequency is 64MHz.   
+Valiant is Generic F103. CPU Frequency is 64MHz.   
 |Options|CNTL_INTERFACE 0|CNTL_INTERFACE 1|
 |:-:|:-:|:-:|
 |Screen fill            |793547 |468909 |
@@ -311,12 +330,11 @@ CPU Frequency is 64MHz.
 |Rounded rects (outline)|111681 |70286  |
 |Rounded rects (filled) |1653430|979834 |
 
-Valiant is F103 PillBoard.   
-CPU Frequency is 72MHz.   
+Valiant is F103 PillBoard. CPU Frequency is 72MHz.   
 |Options|CNTL_INTERFACE 0|CNTL_INTERFACE 1|
 |:-:|:-:|:-:|
-|Screen fill            |705240 |416761 |
-|Text                   |58301  |38790  |
+|Screen fill            |705234 |416761 |
+|Text                   |58300  |38790  |
 |Lines                  |548765 |348482 |
 |Horiz/Vert Lines       |58750  |34908  |
 |Rectangles (outline)   |38415  |23009  |
@@ -337,8 +355,8 @@ The control port is switched ON/OFF using the LL_GPIO_WriteOutputPort function.
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 |CPU Freq|48MHz|64MHz|72MHz|72MHz|84MHz|100MHz|168MHz|180MHz|170MHz|480MHz|80MHz|20MHz|
 |Core|M0|M3|M3|M4|M4|M4|M4|M4|M4|M7|M4|AVR RISC|
-|Screen fill            |713964 |793547 |705240 |358057 |247223 |216304 |141878 |132427 |140239 |222478 |259637 |1379560|
-|Text                   |73319  |65602  |58301  |37647  |25814  |22605  |15097  |14272  |16275  |14691  |28825  |344024 |
+|Screen fill            |713964 |793547 |705234 |358057 |247223 |216304 |141878 |132427 |140239 |222478 |259637 |1379560|
+|Text                   |73319  |65602  |58300  |37647  |25814  |22605  |15097  |14272  |16275  |14691  |28825  |344024 |
 |Lines                  |675985 |617476 |548765 |336332 |235522 |206064 |137693 |130958 |134605 |147000 |250545 |3390180|
 |Horiz/Vert Lines       |60070  |66107  |58750  |30165  |20825  |18221  |11958  |11173  |11847  |18372  |21950  |144664 |
 |Rectangles (outline)   |39824  |43226  |38415  |20040  |13835  |12106  |7953   |7437   |8178   |11863  |14875  |104260 |
