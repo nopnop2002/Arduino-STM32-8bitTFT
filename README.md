@@ -40,7 +40,7 @@ This library uses LL GPIO Generic Driver and CMSIS ODR Register.
 Probably all boards have these available.   
 I tested on these.   
 - STM32F0/F1/F3/F4 series   
-- STM32G4 series   
+- STM32G0/G4 series   
 - STM32H5 series   
 - STM32L4 series   
 
@@ -284,7 +284,10 @@ Serial.print("Height: "); Serial.println(height); // You will see 400
 - NUCLEO F446RE + ILI9341 2.4 inch TFT (Use PC0-PC7 for D0-D7)
 	![8bitTFT](https://user-images.githubusercontent.com/6020549/77814188-2ac26180-70f2-11ea-8080-9e3cac22ce5a.JPG)
 
-- STM32G431 + ILI9341 2.4 inch TFT (Use Serial remapping)
+- STM32G30 + ILI9341 2.4 inch TFT
+	![Image](https://github.com/user-attachments/assets/dcf391b2-2f39-4663-87d9-908f361f101e)
+
+- STM32G431 + ILI9341 2.4 inch TFT
 	![STM32G431](https://github.com/nopnop2002/Arduino-STM32-8bitTFT/assets/6020549/3ff0df09-08d8-418a-a346-5b17dc0ef67b)
 
 - STM32H750  + ILI9341 2.4 inch TFT (Use PC0-PC7 for D0-D7)
