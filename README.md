@@ -284,7 +284,7 @@ Serial.print("Height: "); Serial.println(height); // You will see 400
 - NUCLEO F446RE + ILI9341 2.4 inch TFT (Use PC0-PC7 for D0-D7)
 	![8bitTFT](https://user-images.githubusercontent.com/6020549/77814188-2ac26180-70f2-11ea-8080-9e3cac22ce5a.JPG)
 
-- STM32G30 + ILI9341 2.4 inch TFT
+- STM32G030 + ILI9341 2.4 inch TFT
 	![Image](https://github.com/user-attachments/assets/dcf391b2-2f39-4663-87d9-908f361f101e)
 
 - STM32G431 + ILI9341 2.4 inch TFT
