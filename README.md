@@ -222,6 +222,32 @@ When a regulator is NOT mounted on the back, it's operated 3.3V.
 If you are powering the device via the ST-LINK port, you must provide a separate 5V supply.   
 
 __Note:Keep the wire length as short as possible.__   
+If the wires are not connected correctly, device information cannot be obtained properly.   
+```
+readReg16(0)=0x0
+readReg32(A1)=0x0
+readReg40(BF)=0x0
+readReg32(D4)=0x0
+readReg40(EF)=0x0
+readReg32(FE)=0x0
+readReg32(04)=0x0
+readReg32(D3)=0x0
+readReg16(0)=0x0
+Device ID: 0x0
+```
+
+If the wires are connected correctly, the device information can be obtained accurately.
+```
+readReg16(0)=0x0
+readReg32(A1)=0x0
+readReg40(BF)=0x0
+readReg32(D4)=0x0
+readReg40(EF)=0x202
+readReg32(FE)=0x0
+readReg32(04)=0x0
+readReg32(D3)=0x9341
+Device ID: 0x9341
+```
 
 
 ----
