@@ -223,8 +223,8 @@ If you are powering the device via the ST-LINK port, you must provide a separate
 
 ----
 
-# Detect driver   
-The driver is detected automatically.   
+# Detect TFT driver   
+The TFT driver is detected automatically.   
 __Note:Keep the wire length as short as possible.__   
 If the wires are not connected correctly, device information cannot be obtained properly.   
 ```
