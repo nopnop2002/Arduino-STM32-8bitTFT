@@ -221,6 +221,10 @@ When a regulator(It's often AMS1117) is mounted on the back, it's operated 5V.
 When a regulator is NOT mounted on the back, it's operated 3.3V.   
 If you are powering the device via the ST-LINK port, you must provide a separate 5V supply.   
 
+----
+
+# Detect driver   
+The driver is detected automatically.   
 __Note:Keep the wire length as short as possible.__   
 If the wires are not connected correctly, device information cannot be obtained properly.   
 ```
@@ -248,7 +252,6 @@ readReg32(04)=0x0
 readReg32(D3)=0x9341
 Device ID: 0x9341
 ```
-
 
 ----
 
