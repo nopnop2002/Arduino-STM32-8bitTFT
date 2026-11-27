@@ -41,7 +41,7 @@ Probably all boards have these available.
 I tested on these.   
 - STM32F0/F1/F3/F4 series   
 - STM32G0/G4 series   
-- STM32H5 series   
+- STM32H7 series   
 - STM32L4 series   
 
 ----
@@ -219,7 +219,7 @@ PeripheralPins.c is [here](https://github.com/stm32duino/Arduino_Core_STM32/tree
 (\*3)   
 When a regulator(It's often AMS1117) is mounted on the back, it's operated 5V.   
 When a regulator is NOT mounted on the back, it's operated 3.3V.   
-
+If you are powering the device via the ST-LINK port, you must provide a separate 5V supply.   
 
 __Note:Keep the wire length as short as possible.__   
 
