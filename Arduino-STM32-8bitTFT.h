@@ -55,11 +55,12 @@ To use a different resolution TFT, change this or use setResolution().
 #define GRAY        0x5AEB
 
 
-//#define GPIO_INTERFACE 0 // The data port uses the LL_GPIO_WriteOutputPort function
-#define GPIO_INTERFACE 1 // The data port uses Port output data (ODR) Register
+//#define DATA_INTERFACE 0 // The data port(D0-D7) is controlled using LL_GPIO_WriteOutputPort()
+//#define DATA_INTERFACE 1 // The data port(D0-D7) is controlled using ODR register functions
+#define DATA_INTERFACE 2 // The data port(D0-D7) is controlled using ODR register macros
 
-#define CNTL_INTERFACE 0 // The control port uses the LL_GPIO_WriteOutputPort function
-//#define CNTL_INTERFACE 1 // The control port uses Port bit set/reset (BSRR) Register
+#define CNTL_INTERFACE 0 // The control port uses the LL_GPIO_WriteOutputPort function.
+//#define CNTL_INTERFACE 1 // The control port uses Port bit set/reset (BSRR) Register.
 
 /*
 Define pins and Output Data Registers
@@ -145,6 +146,22 @@ Define pins and Output Data Registers
 #define TFT_D7         LL_GPIO_PIN_15
 #endif
 
+//The data port(D0-D7) is controlled using LL_GPIO_WriteOutputPort()
+#if DATA_INTERFACE == 0
+#define write8(d) write8_ll(d)
+
+//The data port(D0-D7) is controlled using ODR register functions
+#elif DATA_INTERFACE == 1
+#define write8(d) write8_odr(d)
+
+//The data port(D0-D7) is controlled using ODR register macros
+#elif DATA_INTERFACE == 2
+#if  TFT_PORT == PORT_LOW
+#define write8(d) TFT_DATA->ODR = d
+#else
+#define write8(d) TFT_DATA->ODR = d << 8
+#endif
+#endif
 
 // Note:
 // PA15 PB3 PB4 is assigned to JTAG debug port by default on some boards.
@@ -198,9 +215,8 @@ Define pins and Output Data Registers
 #define RST_IDLE       TFT_CNTRL->BSRR = TFT_RST
 #endif
 
-//#define RD_STROBE      {RD_ACTIVE; RD_IDLE;} // Not use
-//#define WR_STROBE      {WR_ACTIVE; WR_IDLE;} // Not use
-
+#define RD_STROBE      {RD_ACTIVE; RD_IDLE;} // Not use
+#define WR_STROBE      {WR_ACTIVE; WR_IDLE;} // Not use
 
 
 class STM32_TFT_8bit : public Adafruit_GFX {
@@ -233,7 +249,8 @@ class STM32_TFT_8bit : public Adafruit_GFX {
  private:
   void     setWriteDataBus(void);
   void     setReadDataBus(void);
-  void     write8(uint8_t);
+  void     write8_ll(uint8_t);
+  void     write8_odr(uint8_t);
   void     writeCmdByte(uint8_t c);
   void     WriteCmd(uint16_t c);
   void     writeDataByte(uint8_t d);
