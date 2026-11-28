@@ -422,6 +422,7 @@ I used the LL_GPIO_WriteOutputPort function to turn the control port on and off.
         <td>F407</td>
         <td>G431</td>
         <td>F446</td>
+        <td>H562</td>
         <td>H750</td>
     </tr>
     <tr>
@@ -438,6 +439,7 @@ I used the LL_GPIO_WriteOutputPort function to turn the control port on and off.
         <td>168MHz</td>
         <td>170MHz</td>
         <td>180MHz</td>
+        <td>250MHz</td>
         <td>480MHz</td>
     </tr>
     <tr>
@@ -454,6 +456,7 @@ I used the LL_GPIO_WriteOutputPort function to turn the control port on and off.
         <td>M4</td>
         <td>M4</td>
         <td>M4</td>
+        <td>M33</td>
         <td>M7</td>
     </tr>
     <tr>
@@ -470,6 +473,7 @@ I used the LL_GPIO_WriteOutputPort function to turn the control port on and off.
         <td>141878</td>
         <td>158932</td>
         <td>132427</td>
+        <td>101466</td>
         <td>222468</td>
     </tr>
     <tr>
@@ -486,6 +490,7 @@ I used the LL_GPIO_WriteOutputPort function to turn the control port on and off.
         <td>15097</td>
         <td>17240</td>
         <td>14272</td>
+        <td>9015</td>
         <td>14673</td>
     </tr>
     <tr>
@@ -502,6 +507,7 @@ I used the LL_GPIO_WriteOutputPort function to turn the control port on and off.
         <td>137693</td>
         <td>152302</td>
         <td>130958</td>
+        <td>87493</td>
         <td>147627</td>
     </tr>
     <tr>
@@ -518,6 +524,7 @@ I used the LL_GPIO_WriteOutputPort function to turn the control port on and off.
         <td>11958</td>
         <td>13410</td>
         <td>11173</td>
+        <td>8502</td>
         <td>18371</td>
     </tr>
     <tr>
@@ -534,6 +541,7 @@ I used the LL_GPIO_WriteOutputPort function to turn the control port on and off.
         <td>7953</td>
         <td>9041</td>
         <td>7437</td>
+        <td>5598</td>
         <td>11867</td>
     </tr>
     <tr>
@@ -550,6 +558,7 @@ I used the LL_GPIO_WriteOutputPort function to turn the control port on and off.
         <td>294609</td>
         <td>330060</td>
         <td>274991</td>
+        <td>210665</td>
         <td>461764</td>
     </tr>
     <tr>
@@ -566,6 +575,7 @@ I used the LL_GPIO_WriteOutputPort function to turn the control port on and off.
         <td>48080</td>
         <td>58613</td>
         <td>45358</td>
+        <td>31899</td>
         <td>59721</td>
     </tr>
     <tr>
@@ -582,6 +592,7 @@ I used the LL_GPIO_WriteOutputPort function to turn the control port on and off.
         <td>60769</td>
         <td>67262</td>
         <td>57622</td>
+        <td>38709</td>
         <td>64918</td>
     </tr>
     <tr>
@@ -598,6 +609,7 @@ I used the LL_GPIO_WriteOutputPort function to turn the control port on and off.
         <td>30354</td>
         <td>33566</td>
         <td>28766</td>
+        <td>19352</td>
         <td>32905</td>
     </tr>
     <tr>
@@ -614,6 +626,7 @@ I used the LL_GPIO_WriteOutputPort function to turn the control port on and off.
         <td>106788</td>
         <td>122744</td>
         <td>99944</td>
+        <td>74429</td>
         <td>155460</td>
     </tr>
     <tr>
@@ -630,6 +643,7 @@ I used the LL_GPIO_WriteOutputPort function to turn the control port on and off.
         <td>23791</td>
         <td>26548</td>
         <td>22529</td>
+        <td>15519</td>
         <td>27647</td>
     </tr>
     <tr>
@@ -646,6 +660,7 @@ I used the LL_GPIO_WriteOutputPort function to turn the control port on and off.
         <td>297450</td>
         <td>334986</td>
         <td>277742</td>
+        <td>211891</td>
         <td>461366</td>
     </tr>
 </table>
