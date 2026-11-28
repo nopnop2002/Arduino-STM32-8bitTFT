@@ -41,7 +41,7 @@ Probably all boards have these available.
 I tested on these.   
 - STM32F0/F1/F3/F4 series   
 - STM32G0/G4 series   
-- STM32H7 series   
+- STM32H5/H7 series   
 - STM32L4 series   
 
 ----
