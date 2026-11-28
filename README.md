@@ -70,8 +70,8 @@ I tested on these.
 
 - Adafruit GFX Library   
 	https://github.com/adafruit/Adafruit-GFX-Library   
-	I used version 2.0.0.   
-	<img width="969" height="649" alt="adafruit-gfx-library" src="https://github.com/user-attachments/assets/6d2a49b7-fd86-49e9-a789-02aced4778ad" />
+	I used version 1.13.0.   
+	<img width="971" height="648" alt="adafruit-gfx-library" src="https://github.com/user-attachments/assets/c76c26c6-841d-48ec-80bb-44bd2656b655" />
 
 ----
 
